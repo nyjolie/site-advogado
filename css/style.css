@@ -5716,21 +5716,24 @@ section,
    CORREÇÃO DE RESPONSIVIDADE: TABLETS E TELAS MÉDIAS (769px a 1024px)
    ========================================================================== */
 @media (max-width: 1024px) {
-  
+
   /* 1. Ativação do Menu Hambúrguer no Tablet (Evita esmagamento do cabeçalho) */
   .mobile-toggle {
-    display: flex !important; /* Mostra o ícone do menu hambúrguer */
+    display: flex !important;
+    /* Mostra o ícone do menu hambúrguer */
   }
-  
+
   .header-actions .btn-nav {
-    display: none !important; /* Esconde o botão superior para não competir por espaço */
+    display: none !important;
+    /* Esconde o botão superior para não competir por espaço */
   }
 
   /* 2. Reconfiguração da Barra de Navegação Oculta (Estilo Mobile) */
   .nav-menu {
     position: fixed !important;
     top: 80px !important;
-    left: -100% !important; /* Escondido por padrão, aberto via JavaScript */
+    left: -100% !important;
+    /* Escondido por padrão, aberto via JavaScript */
     width: 100% !important;
     height: calc(100vh - 80px) !important;
     background-color: #0e0e10 !important;
@@ -5742,7 +5745,8 @@ section,
   }
 
   .nav-menu.open {
-    left: 0 !important; /* Classe que o seu JS já ativa ao clicar */
+    left: 0 !important;
+    /* Classe que o seu JS já ativa ao clicar */
   }
 
   .nav-list {
@@ -5754,24 +5758,29 @@ section,
   }
 
   .nav-item {
-    font-size: 1.1rem !important; /* Links maiores para toque na tela */
+    font-size: 1.1rem !important;
+    /* Links maiores para toque na tela */
   }
 
   /* 3. Ajuste de Respiro e Centralização do Hero na Tela Média */
   .hero-section {
-    padding-top: 140px !important; /* Respiro ideal abaixo da navbar */
+    padding-top: 140px !important;
+    /* Respiro ideal abaixo da navbar */
     padding-bottom: 100px !important;
   }
-  
+
   .hero-title {
-    font-size: 2.6rem !important; /* Título escalado para não quebrar */
+    font-size: 2.6rem !important;
+    /* Título escalado para não quebrar */
     line-height: 1.25 !important;
-    padding: 0 15px !important; /* Margem de segurança nas laterais */
+    padding: 0 15px !important;
+    /* Margem de segurança nas laterais */
   }
-  
+
   .hero-description {
     font-size: 1.05rem !important;
-    padding: 0 20px !important; /* Margem de segurança nas laterais */
+    padding: 0 20px !important;
+    /* Margem de segurança nas laterais */
   }
 }
 
@@ -5779,8 +5788,9 @@ section,
    CORREÇÃO DE UX: CABEÇALHO LADO A LADO EM TABLETS (ATÉ 1024px)
    ========================================================================== */
 @media (max-width: 1024px) {
+
   /* Impede que o cabeçalho aja como uma coluna centralizada */
-  .main-header, 
+  .main-header,
   header#navbar {
     display: block !important;
     width: 100% !important;
@@ -5790,10 +5800,11 @@ section,
   .header-container {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: space-between !important; 
+    justify-content: space-between !important;
     align-items: center !important;
     width: 100% !important;
-    padding: 0 24px !important; /* Margem de segurança lateral */
+    padding: 0 24px !important;
+    /* Margem de segurança lateral */
     box-sizing: border-box !important;
   }
 
@@ -5819,7 +5830,8 @@ section,
    ========================================================================== */
 
 /* 1. Base da Página: Previne que o corpo do site encolha em telas maiores */
-html, body {
+html,
+body {
   width: 100% !important;
   max-width: 100% !important;
   overflow-x: hidden !important;
@@ -5827,10 +5839,11 @@ html, body {
 }
 
 /* 2. Seções Principais: Desativa a coluna flexível que estava esmagando o fundo */
-section, 
-header.main-header, 
+section,
+header.main-header,
 footer.main-footer {
-  display: block !important; /* Retorna ao padrão de bloco para esticar o fundo 100% */
+  display: block !important;
+  /* Retorna ao padrão de bloco para esticar o fundo 100% */
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
@@ -5842,4 +5855,73 @@ footer.main-footer {
   max-width: var(--container-width, 1200px) !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+/* ==========================================================================
+   AJUSTE DE TIPOGRAFIA: TÍTULO MAXIMIZADO E SUBTÍTULO OTIMIZADO (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+  
+  /* 1. Expansão Máxima do Título Principal (Impacto Visual) */
+  .hero-section .hero-title {
+    font-size: 2.65rem !important; /* Fonte extra grande para prender a atenção */
+    line-height: 1.1 !important; /* Linhas bem justas para o bloco não ficar alto demais */
+    letter-spacing: -1.5px !important; /* Mantém as letras unidas para caber mais palavras */
+    padding: 0 12px !important; /* Espaço de segurança para não encostar no vidro do celular */
+    width: 100% !important; /* Deixa a "caixa azul" preencher a tela */
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* 2. Redução e Otimização de Leitura do Subtítulo (~5 linhas) */
+  .hero-section .hero-description {
+    font-size: 0.9rem !important; /* Fonte menor e elegante (contraste com o título gigante) */
+    line-height: 1.55 !important; /* Respiro confortável entre as linhas para facilitar a leitura */
+    width: 90% !important; /* Encurta um pouco as laterais para forçar o texto a descer em bloco */
+    max-width: 400px !important; /* Limite de segurança extra */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 !important;
+  }
+}
+
+/* Proteção extra para telas muito pequenas (ex: iPhone SE com 320px) */
+@media (max-width: 380px) {
+  .hero-section .hero-title {
+    font-size: 2.2rem !important; 
+  }
+  .hero-section .hero-description {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* ==========================================================================
+   UX/CRO: EXIBIR BOTÃO WHATSAPP APENAS APÓS A PRIMEIRA SEÇÃO
+   ========================================================================== */
+.chatbot-container {
+  opacity: 0 !important; /* Escondido por padrão */
+  visibility: hidden !important; /* Remove da interação para não bloquear cliques */
+  transform: translateY(30px) !important; /* Empurra um pouco para baixo para o efeito de entrada */
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease !important;
+}
+
+/* Classe que o JavaScript vai adicionar quando rolar a tela */
+.chatbot-container.show-btn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important; /* Retorna à posição original */
+}
+
+/* ==========================================================================
+   AJUSTE FINO: POSIÇÃO DO BOTÃO WHATSAPP (MAIS PARA A DIREITA)
+   ========================================================================== */
+.chatbot-container {
+  right: 20px !important; /* Reduz de 30px para 20px, empurrando para a direita no PC */
+}
+
+@media (max-width: 768px) {
+  .chatbot-container {
+    right: 12px !important; /* No mobile, cola ainda mais na direita para poupar espaço de tela */
+  }
 }

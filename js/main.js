@@ -608,3 +608,24 @@ function handleFormSubmit(event) {
   window.open(`https://api.whatsapp.com/send?phone=${numeroEmpresa}&text=${encodeURIComponent(mensagem)}`, '_blank');
 }
 
+/* ==========================================================================
+   UX/CRO: LÓGICA DO BOTÃO FLUTUANTE DE WHATSAPP (APARECER NO SCROLL)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const floatingWhatsApp = document.querySelector('.chatbot-container');
+  const heroSection = document.getElementById('inicio'); // Pega a primeira seção
+
+  if (floatingWhatsApp && heroSection) {
+    window.addEventListener('scroll', () => {
+      // Quando a rolagem passar de 70% da altura da primeira tela (Hero), o botão aparece
+      if (window.scrollY > (heroSection.offsetHeight * 0.7)) {
+        floatingWhatsApp.classList.add('show-btn');
+      } else {
+        floatingWhatsApp.classList.remove('show-btn'); // Some se o usuário voltar pro topo
+      }
+    });
+    
+    // Dispara uma vez no carregamento para garantir o estado correto caso o usuário atualize a página no meio do site
+    window.dispatchEvent(new Event('scroll'));
+  }
+});
