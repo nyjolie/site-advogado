@@ -1,0 +1,5845 @@
+/* ==========================================================================
+   DESIGN SYSTEM & VARIABLES - FALCE ADVOCACIA
+   ========================================================================== */
+:root {
+  /* Color Palette */
+  --bg-primary: #0e0e10;
+  /* Ultra-premium dark obsidian background */
+  --bg-secondary: #16161a;
+  /* Sophisticated dark slate for cards & headers */
+  --bg-tertiary: #1f1f25;
+  /* Elevated light charcoal for hover states */
+  --accent-red: #d92626;
+  /* Radiant ruby red from the logo emblem */
+  --accent-red-hover: #b31b1b;
+  /* Dark crimson red for state changes */
+  --accent-red-glow: rgba(219, 38, 38, 0.45);
+
+  --silver-light: #f8fafc;
+  --silver-medium: #cbd5e1;
+  --silver-dark: #64748b;
+  --text-white: #ffffff;
+  --text-silver: #e2e8f0;
+  --text-muted: #94a3b8;
+
+  --gold-bronze: #c5a880;
+  /* Muted elegant gold for traditional creds */
+
+  --border-color: rgba(148, 163, 184, 0.1);
+  --border-glow: rgba(219, 38, 38, 0.15);
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-sans: 'Inter', 'Outfit', sans-serif;
+
+  /* Layout Options */
+  --container-width: 1200px;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --border-radius-lg: 16px;
+  --border-radius-md: 8px;
+}
+
+/* ==========================================================================
+   RESET & SCROLLBAR
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ativa o efeito de rolagem suave em todo o site */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-silver);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border: 2px solid var(--bg-primary);
+  border-radius: var(--border-radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-red);
+}
+
+/* ==========================================================================
+   LAYOUT & CONTAINER UTILITIES
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 120px 0;
+}
+
+.bg-dark-slate {
+  background-color: var(--bg-secondary);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gradient-silver {
+  background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 70%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+/* ==========================================================================
+   PREMIUM GLASSMORPHISM & CARD EFFECTS
+   ========================================================================== */
+.glass-effect {
+  background: rgba(22, 22, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   BUTTONS SYSTEM
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-smooth);
+  letter-spacing: 0.5px;
+}
+
+.btn-red {
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  box-shadow: 0 4px 14px rgba(217, 38, 38, 0.2);
+}
+
+.btn-red:hover {
+  background-color: var(--accent-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-red-glow);
+}
+
+.btn-red-glow {
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  animation: pulse-glow 3s infinite;
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  box-shadow: 0 4px 14px rgba(217, 38, 38, 0.2);
+  transition: var(--transition-smooth);
+  letter-spacing: 0.5px;
+}
+
+.btn-hero-primary:hover {
+  background-color: var(--accent-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-red-glow);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 38, 38, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(217, 38, 38, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 38, 38, 0);
+  }
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (HEADER)
+   ========================================================================== */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(14, 14, 16, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+}
+
+.main-header.scrolled {
+  background: rgba(14, 14, 16, 0.95);
+  padding: 10px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+
+/* Logo Navigation */
+.logo-link {
+  display: flex;
+  align-items: center;
+  /* Centraliza a imagem da logo e os textos no mesmo eixo horizontal */
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logo-icon-wrapper {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon-wrapper.size-small {
+  width: auto;
+  height: auto;
+}
+
+.logo-svg-nav {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1;
+}
+
+.logo-title.text-white {
+  color: var(--text-white);
+}
+
+.logo-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.logo-subtitle.tracking-wide {
+  letter-spacing: 3px;
+}
+
+/* Navigation Links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-item {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  position: relative;
+  padding: 6px 0;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--text-white);
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-red);
+  transition: var(--transition-smooth);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-nav {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+}
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+}
+
+.mobile-toggle .bar {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-white);
+  transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  padding-top: 140px;
+  padding-bottom: 80px;
+  background: radial-gradient(circle at 10% 20%, rgba(26, 26, 30, 0.4) 0%, rgba(14, 14, 16, 1) 90%);
+  overflow: hidden;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 30%, rgba(217, 38, 38, 0.08) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.hero-grid-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+  background-size: 24px 24px;
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.badge-experience {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(197, 168, 128, 0.08);
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+}
+
+.gold-badge-stars {
+  color: var(--gold-bronze);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+.badge-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gold-bronze);
+  letter-spacing: 1.5px;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  max-width: 600px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.hero-social-proof {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 32px;
+  width: 100%;
+}
+
+.proof-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.proof-number {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1.2;
+}
+
+.proof-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.border-divider {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  padding: 0 32px;
+}
+
+/* Hero Visual / Glowing Emblem Card */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visual-glow-red {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-color: var(--accent-red);
+  filter: blur(120px);
+  opacity: 0.15;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.emblem-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 360px;
+  background: rgba(22, 22, 26, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  transition: var(--transition-smooth);
+}
+
+.emblem-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-glow);
+  box-shadow: 0 30px 60px rgba(217, 38, 38, 0.1);
+}
+
+.card-glass-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.card-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.card-dot.red {
+  background-color: var(--accent-red);
+}
+
+.card-dot.grey {
+  background-color: var(--text-muted);
+}
+
+.emblem-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.emblem-svg {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+}
+
+.emblem-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-white);
+  margin-bottom: 4px;
+}
+
+.emblem-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.emblem-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+  justify-content: center;
+}
+
+.status-indicator-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse-live 2s infinite;
+}
+
+@keyframes pulse-live {
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.status-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Bottom Masking Wave */
+.wave-shape-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave-shape-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 48px;
+}
+
+.wave-shape-bottom .shape-fill {
+  fill: var(--bg-primary);
+}
+
+/* ==========================================================================
+   SECTION COMMON HEADER Styling
+   ========================================================================== */
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-tagline {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-red);
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   BIPARTITE TAB CONTROL
+   ========================================================================== */
+.tab-control-wrapper {
+  display: inline-flex;
+  background-color: var(--bg-secondary);
+  padding: 6px;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  margin-top: 36px;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 50px;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+}
+
+.tab-btn:hover {
+  color: var(--text-white);
+}
+
+.tab-btn.active {
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  box-shadow: 0 4px 12px rgba(217, 38, 38, 0.25);
+}
+
+.tab-content-pane {
+  display: none;
+  animation: fade-in-scale 0.5s ease;
+}
+
+.tab-content-pane.active {
+  display: block;
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   PRACTICE AREAS CARDS GRID
+   ========================================================================== */
+.practice-grid,
+.practice-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.practice-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 36px;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.practice-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(217, 38, 38, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(217, 38, 38, 0.05);
+}
+
+.card-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--border-radius-md);
+  background-color: rgba(217, 38, 38, 0.06);
+  border: 1px solid rgba(217, 38, 38, 0.15);
+  color: var(--accent-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  transition: var(--transition-smooth);
+}
+
+.practice-card:hover .card-icon-box {
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  box-shadow: 0 0 15px var(--accent-red-glow);
+  transform: scale(1.05);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  border-radius: 8px;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+
+  /* ELEMENTOS ADICIONADOS PARA CENTRALIZAÇÃO PERFEITA */
+  display: flex;
+  align-items: center;
+  /* Centraliza verticalmente */
+  justify-content: center;
+  /* Centraliza horizontalmente */
+}
+
+.practice-card:hover .card-icon {
+  background-color: var(--text-white);
+  color: var(--accent-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--accent-red-glow);
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--text-white);
+  margin-bottom: 12px;
+}
+
+.card-body-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.card-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-red);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-link:hover {
+  color: var(--text-white);
+}
+
+.card-link i {
+  font-size: 0.75rem;
+  transition: var(--transition-smooth);
+}
+
+.card-link:hover i {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   ABOUT THE OFFICE SECTION
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+}
+
+.about-image-wrapper {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.about-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(10%) contrast(110%);
+}
+
+.about-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(14, 14, 16, 0.75) 0%, transparent 60%);
+}
+
+.experience-seal {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--bg-primary);
+  border: 2px solid var(--gold-bronze);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.seal-number {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-bronze);
+  line-height: 1;
+}
+
+.seal-text {
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.about-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.about-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.pillar-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.pillar-icon {
+  font-size: 1.4rem;
+  color: var(--accent-red);
+  margin-top: 4px;
+}
+
+.pillar-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-white);
+  margin-bottom: 4px;
+}
+
+.pillar-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   GUIDE OF RIGHTS (EVERGREEN ARTICLES)
+   ========================================================================== */
+.rights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.article-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.article-tag {
+  background-color: var(--bg-tertiary);
+  color: var(--text-white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--border-color);
+  align-self: flex-start;
+}
+
+.article-body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.article-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--text-white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.article-excerpt {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.btn-read-article {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-red);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+
+.btn-read-article:hover {
+  color: var(--text-white);
+}
+
+/* ==========================================================================
+   ARTICLE MODALS SYSTEM
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(14, 14, 16, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 24px;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  transform: translateY(30px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.open .modal-card {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--bg-primary);
+}
+
+.modal-close:hover {
+  color: var(--text-white);
+  background-color: var(--accent-red);
+}
+
+.modal-header {
+  padding: 40px 40px 20px 40px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-badge-tag {
+  color: var(--accent-red);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--text-white);
+}
+
+.modal-body-content {
+  padding: 30px 40px 40px 40px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.modal-body-content p {
+  margin-bottom: 16px;
+}
+
+.modal-body-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-white);
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.modal-body-content ul,
+.modal-body-content ol {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.modal-body-content li {
+  margin-bottom: 8px;
+}
+
+.modal-cta-box {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  margin-top: 30px;
+  border-left: 4px solid var(--accent-red);
+}
+
+.modal-cta-box p {
+  color: var(--text-white);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   GOOGLE REVIEWS SECTION
+   ========================================================================== */
+/* Container do resumo da nota do Google */
+.google-rating-summary {
+  display: flex;
+  flex-direction: column;
+  /* Organiza em linha vertical (Número em cima, Estrelas embaixo) */
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  /* Espaçamento ultra reduzido entre o número e as estrelas */
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* O Número 4.9 */
+.rating-number {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 3rem;
+  /* Tamanho de destaque imponente */
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  /* Remove folgas verticais da fonte */
+  margin: 0;
+}
+
+/* As Estrelas Douradas coladas */
+.rating-stars {
+  color: #ff9800;
+  /* Tom de ouro clássico do Google */
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  /* Mantém as estrelas unidas entre si */
+  line-height: 1;
+  margin: 0;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 48px;
+}
+
+.review-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  transition: var(--transition-smooth);
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  background-color: var(--bg-tertiary);
+  color: var(--accent-red);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.review-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+.review-profile {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.google-g-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 1.1rem;
+}
+
+.stars-card {
+  color: #ffb800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   CONSULTATION SCHEDULER LAYOUT
+   ========================================================================== */
+.scheduler-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.scheduler-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.scheduler-p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.benefit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.benefit-item i {
+  color: var(--accent-red);
+}
+
+/* ==================== FORMULÁRIO DE AGENDAMENTO COMPACTO ==================== */
+.booking-card {
+  background: #16161a;
+  border: 1px solid #232329;
+  border-radius: 12px;
+  padding: 1.5rem !important;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.booking-card-title {
+  font-size: 1.35rem !important;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.booking-divider {
+  border: 0;
+  border-top: 1px solid #232329;
+  margin-bottom: 1.25rem;
+}
+
+.form-step-group {
+  margin-bottom: 1.25rem;
+}
+
+.step-label {
+  display: block;
+  font-size: 0.8rem !important;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+
+/* GRIDS RESPONSIVOS */
+.date-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+}
+
+/* Nova grade para exibir os horários de forma compacta (3 colunas) */
+.hours-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.profile-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+/* CARDS DE SELEÇÃO ENXUTOS */
+.booking-selector-card {
+  background: #0f0f11;
+  border: 1px solid #232329;
+  border-radius: 6px;
+  padding: 0.5rem !important;
+  text-align: center;
+  color: #cbd5e0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo específico para o mini card de hora */
+.hour-card {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 0 !important;
+}
+
+.booking-selector-card:hover {
+  border-color: rgba(229, 62, 62, 0.4);
+}
+
+.booking-selector-card.is-selected {
+  border-color: #e53e3e !important;
+  background: rgba(229, 62, 62, 0.04) !important;
+  box-shadow: 0 0 10px rgba(229, 62, 62, 0.15);
+  color: #ffffff;
+}
+
+/* Textos internos */
+.card-top-text {
+  font-size: 0.65rem;
+  color: #718096;
+  font-weight: 600;
+  display: block;
+}
+
+.card-main-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: block;
+  margin-top: 1px;
+}
+
+.profile-icon-small {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: #e53e3e;
+}
+
+.profile-cards-grid span {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* INPUTS */
+.booking-text-input {
+  width: 100%;
+  background: #0f0f11 !important;
+  border: 1px solid #232329 !important;
+  border-radius: 6px !important;
+  padding: 0.6rem 0.75rem !important;
+  color: #ffffff !important;
+  font-size: 0.85rem !important;
+  box-sizing: border-box;
+}
+
+.booking-text-input:focus {
+  border-color: #e53e3e !important;
+  outline: none;
+}
+
+/* BOTÃO ENXUTO */
+.btn-submit-booking {
+  width: 100%;
+  background: #e53e3e;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem !important;
+  font-size: 0.9rem !important;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.btn-submit-booking:hover {
+  background: #c53030;
+}
+
+.form-disclaimer {
+  font-size: 0.65rem !important;
+  color: #718096;
+  text-align: center;
+  margin-top: 0.6rem;
+  line-height: 1.3;
+}
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 480px) {
+  .booking-card {
+    padding: 1.25rem !important;
+  }
+
+  .date-cards-grid {
+    gap: 0.25rem;
+  }
+
+  .card-main-text {
+    font-size: 0.95rem;
+  }
+
+  .hours-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* Mantém 3 colunas organizadas no celular */
+    gap: 0.35rem;
+  }
+}
+
+
+/* ==========================================================================
+   CONTACT INFO & TWO COLUMN LAYOUT
+   ========================================================================== */
+.contact-panel-p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+/* Estrutura do Grid de Duas Colunas */
+.contact-two-columns-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Divide a tela exatamente ao meio */
+  gap: 3rem;
+  align-items: stretch;
+  /* Força o mapa a ter a exata mesma altura dos textos */
+  width: 100%;
+}
+
+/* Coluna dos Textos */
+.contact-info-panel-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Centraliza verticalmente as informações em relação ao mapa */
+}
+
+.contact-details-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* Espaçamento equilibrado entre os blocos de informação */
+}
+
+/* Itens de contato individuais alinhados à esquerda */
+.detail-item-modern {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.detail-icon-box {
+  background: rgba(229, 62, 62, 0.1);
+  color: #e53e3e;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  /* Impede o ícone de amassar se o texto for longo */
+}
+
+.detail-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #718096;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.detail-val {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Coluna do Mapa */
+.contact-map-panel-right {
+  width: 100%;
+  min-height: 400px;
+  /* Altura mínima garantida para o mapa */
+}
+
+.maps-container-fluid {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #232329;
+}
+
+/* Responsividade: Quebra para uma coluna em telas menores (Tablets e Mobile) */
+@media (max-width: 900px) {
+  .contact-two-columns-layout {
+    grid-template-columns: 1fr;
+    /* Vira uma única coluna */
+    gap: 2.5rem;
+  }
+
+  .contact-map-panel-right {
+    height: 350px;
+    /* Define uma altura fixa excelente para o mobile */
+  }
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.main-footer {
+  background-color: #08080a;
+  border-top: 1px solid var(--border-color);
+  padding-top: 80px;
+}
+
+/* Redefinição do Grid do Rodapé para 3 colunas perfeitas */
+.footer-grid-three-columns {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  /* Pesos visuais diferentes para equilibrar o texto maior na esquerda */
+  gap: 4rem;
+  /* Aumenta o recuo interno entre as colunas */
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Garante o comportamento responsivo em telas menores (tablets/celulares) */
+@media (max-width: 900px) {
+  .footer-grid-three-columns {
+    grid-template-columns: 1fr;
+    /* Vira uma coluna única linear e empilhada */
+    gap: 2.5rem;
+    text-align: left;
+  }
+}
+
+.footer-brand-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.footer-social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social-links a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-social-links a:hover {
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  border-color: var(--accent-red);
+  box-shadow: 0 0 10px var(--accent-red-glow);
+}
+
+.footer-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-white);
+  margin-bottom: 24px;
+}
+
+.footer-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links-list a {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links-list a:hover {
+  color: var(--text-white);
+  padding-left: 4px;
+}
+
+.footer-links-list a i {
+  font-size: 0.65rem;
+  color: var(--accent-red);
+}
+
+.footer-credentials-p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.credentials-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.badge-oab,
+.badge-lgpd {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  font-size: 0.78rem;
+  font-weight: 500;
+  border-radius: var(--border-radius-md);
+  color: var(--text-white);
+}
+
+.badge-oab i {
+  color: var(--gold-bronze);
+}
+
+.badge-lgpd i {
+  color: #10b981;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid var(--border-color);
+  padding: 30px 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.bottom-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-bar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.bottom-bar-links a:hover {
+  color: var(--text-white);
+}
+
+/* ==========================================================================
+   FLOATING TRIAGE CHATBOT & WHATSAPP WIDGET
+   ========================================================================== */
+.chatbot-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+}
+
+.chatbot-toggle-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25d366;
+  /* Standard WhatsApp Green */
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.chatbot-toggle-btn:hover {
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+}
+
+.pulse-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: pulse-ring 2.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.chatbot-badge-notification {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--text-white);
+}
+
+/* Chatbot Panel Window */
+.chatbot-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 360px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+  transform-origin: bottom right;
+  transition: var(--transition-smooth);
+  max-height: 500px;
+  height: 80vh;
+}
+
+.chatbot-window.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.chatbot-header {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatbot-header-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chatbot-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--accent-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.active-status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border: 1.5px solid var(--bg-primary);
+  border-radius: 50%;
+}
+
+.chatbot-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-white);
+  line-height: 1.2;
+}
+
+.chatbot-status {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.chatbot-close-btn {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+}
+
+.chatbot-close-btn:hover {
+  color: var(--text-white);
+}
+
+.chatbot-messages {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #0b0b0d;
+}
+
+.chat-msg {
+  display: flex;
+  width: 100%;
+}
+
+.chat-msg.bot {
+  justify-content: flex-start;
+}
+
+.chat-msg.user {
+  justify-content: flex-end;
+}
+
+.msg-bubble {
+  max-width: 85%;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  border-radius: 14px;
+  line-height: 1.4;
+}
+
+.chat-msg.bot .msg-bubble {
+  background-color: var(--bg-secondary);
+  color: var(--text-silver);
+  border-bottom-left-radius: 2px;
+  border: 1px solid var(--border-color);
+}
+
+.chat-msg.user .msg-bubble {
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  border-bottom-right-radius: 2px;
+}
+
+.chat-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.chat-opt-btn {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-white);
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: var(--border-radius-md);
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+
+.chat-opt-btn:hover {
+  border-color: var(--accent-red);
+  background-color: rgba(217, 38, 38, 0.03);
+}
+
+.chatbot-footer {
+  padding: 12px 16px;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 10px;
+}
+
+.chatbot-input {
+  flex-grow: 1;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: var(--text-white);
+}
+
+.chatbot-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chatbot-send-btn {
+  color: var(--accent-red);
+  font-size: 1.1rem;
+}
+
+.chatbot-send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   ANIMATIONS & EFFECTS
+   ========================================================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: fadeInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-ctas.fade-in-up {
+  animation-delay: 0.2s;
+}
+
+.hero-social-proof.fade-in-up {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .about-grid,
+  .scheduler-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-img {
+    height: 400px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 80px 0;
+  }
+
+  /* Mobile Menu navigation toggle */
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: var(--bg-primary);
+    transition: var(--transition-smooth);
+    z-index: 998;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .nav-menu.open {
+    left: 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    padding: 40px;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .nav-item {
+    font-size: 1.1rem;
+  }
+
+  .header-actions .btn-nav {
+    display: none;
+    /* Hide top CTA to avoid clutter */
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-ctas {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .border-divider {
+    padding: 0 16px;
+  }
+
+  .hero-social-proof {
+    justify-content: center;
+  }
+
+  .tab-control-wrapper {
+    flex-direction: column;
+    width: 100%;
+    border-radius: var(--border-radius-md);
+  }
+
+  .tab-btn {
+    width: 100%;
+    border-radius: var(--border-radius-md);
+    justify-content: center;
+  }
+
+  .cal-date-btn {
+    padding: 8px 4px;
+  }
+
+  .cal-day {
+    font-size: 1rem;
+  }
+
+  .shifts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-panel {
+    padding: 24px;
+  }
+
+  .form-row.split {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-bar-container {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-dates-row {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .chatbot-window {
+    width: 320px;
+    bottom: 70px;
+    right: -10px;
+  }
+}
+
+/* ==========================================================================
+   RIGHTS GUIDE (SEO EVERGREEN) SECTION STYLE
+   ========================================================================== */
+
+/* Container principal dos cards utilizando CSS Grid */
+.rights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* Base do Card de Artigo - Premium Dark Theme */
+.article-card.px-aligned {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Alinha estritamente todos os blocos no início (esquerda) */
+  text-align: left;
+  /* Garante que as linhas de texto comecem à esquerda */
+  background: #16161a;
+  /* Tom escuro premium do site atual */
+  border: 1px solid #232329;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  /* Espaçamento interno confortável e idêntico em todas as bordas */
+  box-sizing: border-box;
+  cursor: default;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.article-card.px-aligned:hover {
+  transform: translateY(-4px);
+  border-color: rgba(229, 62, 62, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 30px rgba(229, 62, 62, 0.05);
+}
+
+/* Linha superior de metadados */
+.article-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Mantém a tag na esquerda e o tempo na direita */
+  width: 100%;
+  margin-bottom: 2rem;
+  /* Espaço seguro até o título */
+}
+
+/* Forçando o Título, o Parágrafo e o Botão a zerarem qualquer margem lateral interna */
+.article-card.px-aligned .article-card-title,
+.article-card.px-aligned .article-excerpt,
+.article-card.px-aligned .btn-read-article {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  width: 100%;
+}
+
+/* Estilização dos textos internos */
+.article-card.px-aligned .article-card-title {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+
+.article-card.px-aligned .article-excerpt {
+  font-size: 1rem;
+  color: #a0aec0;
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  /* Espaço até o botão de ação */
+}
+
+/* Botão "Ler Guia Completo" - Clicável e Perfeitamente Alinhado */
+.article-card.px-aligned .btn-read-article {
+  background: transparent;
+  border: none;
+  color: #e53e3e;
+  /* Vermelho institucional */
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  /* Força o conteúdo do botão para a esquerda */
+  transition: color 0.2s ease;
+}
+
+.article-card.px-aligned .btn-read-article:hover {
+  color: #fc8181;
+}
+
+.article-card.px-aligned .btn-read-article i {
+  transition: transform 0.2s ease;
+}
+
+.article-card.px-aligned .btn-read-article:hover i {
+  transform: translateX(3px);
+}
+
+/* Estilo das Tags superiores */
+.article-tag {
+  padding: 0.35rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.tag-red {
+  background: rgba(229, 62, 62, 0.15);
+  color: #e53e3e;
+}
+
+.tag-blue {
+  background: rgba(49, 130, 206, 0.15);
+  color: #3182ce;
+}
+
+.tag-purple {
+  background: rgba(128, 90, 213, 0.15);
+  color: #805ad5;
+}
+
+.tag-grey {
+  background: rgba(74, 85, 104, 0.15);
+  color: #cbd5e0;
+}
+
+.tag-teal {
+  background: rgba(49, 151, 149, 0.15);
+  color: #319795;
+}
+
+.tag-orange {
+  background: rgba(221, 107, 32, 0.15);
+  color: #dd6b20;
+}
+
+.read-time {
+  color: #a0aec0;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Container do botão de visualização de todos os artigos */
+.view-all-articles-container {
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+.view-all-articles-container .btn-outline {
+  padding: 0.9rem 2.5rem;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent-red);
+  background: transparent;
+  color: var(--text-white);
+  transition: var(--transition-smooth);
+}
+
+.view-all-articles-container .btn-outline:hover {
+  background-color: var(--accent-red);
+  color: var(--text-white);
+  box-shadow: 0 4px 15px var(--accent-red-glow);
+  transform: translateY(-2px);
+}
+
+.view-all-articles-container .btn-outline i {
+  color: var(--accent-red);
+  transition: var(--transition-smooth);
+}
+
+.view-all-articles-container .btn-outline-hover i {
+  color: var(--text-white);
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   GOOGLE REVIEWS SLIDER STYLE
+   ========================================================================== */
+
+/* Estrutura de contenção do Slider */
+.reviews-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 0 3rem;
+  /* Espaço nas laterais para as setas não cobrirem os cards */
+  box-sizing: border-box;
+}
+
+/* Janela que esconde os cards que ficam de fora */
+.reviews-slider-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Linha contínua que segura os cards e se move horizontalmente */
+.reviews-slider-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Garantindo tamanho fixo para os cards dentro do carrossel */
+.reviews-slider-track .review-card {
+  flex: 0 0 calc(33.333% - 1.34rem);
+  /* Exibe exatamente 3 cards por vez em telas grandes */
+  min-width: 300px;
+  background: #16161a;
+  border: 1px solid #232329;
+  border-radius: 12px;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Responsividade do Slider para telas menores */
+@media (max-width: 1024px) {
+  .reviews-slider-track .review-card {
+    flex: 0 0 calc(50% - 1rem);
+    /* Exibe 2 cards em tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-slider-wrapper {
+    padding: 0 1rem;
+  }
+
+  .reviews-slider-track .review-card {
+    flex: 0 0 100%;
+    /* Exibe 1 card por vez no mobile */
+  }
+
+  .slider-arrow {
+    display: none;
+    /* Em mobile puro, o scroll por arrasto de dedo é melhor */
+  }
+
+  .reviews-slider-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Estilização das Setas de Navegação */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background: #1c1c22;
+  border: 1px solid #2d2d38;
+  color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+  background: #e53e3e;
+  border-color: #e53e3e;
+  box-shadow: 0 0 12px rgba(229, 62, 62, 0.4);
+}
+
+.prev-arrow {
+  left: 0;
+}
+
+.next-arrow {
+  right: 0;
+}
+
+/* Correções finas de alinhamento interno da Review baseado na imagem */
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+.review-user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.google-g-icon {
+  margin-left: auto;
+  color: #4a5568;
+}
+
+.stars-card {
+  color: #ff9800;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.review-text {
+  color: #a0aec0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Container do Emblema OAB Flutuante - Livre de Cortes e Fora da Imagem */
+.oab-floating-badge {
+  position: absolute;
+  bottom: 30px;
+  /* Distância sutil do rodapé da imagem */
+  left: -50px;
+  /* Empurra o selo para fora da imagem, invadindo o espaço escuro do site */
+  background: #16161a;
+  /* Fundo escuro idêntico ao site para manter a leitura nítida */
+  border: 2px solid #d4af37;
+  /* Borda dourada refinada */
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2);
+  z-index: 99;
+  /* Garante prioridade total na frente de qualquer outra camada */
+
+  /* Mantém a animação suave e elegante */
+  animation: smoothFloat 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Ícone de Balança */
+.oab-floating-badge i {
+  color: #d4af37;
+  font-size: 1.3rem;
+}
+
+/* Texto OAB/SP: 193.419 */
+.oab-number-text {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  color: #d4af37;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Regra matemática da animação para flutuação vertical suave */
+@keyframes smoothFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+    /* Sobe suavemente 8 pixels no meio do ciclo */
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* No mobile, traz o selo para dentro do layout para não gerar quebra de tela lateral horizontal */
+@media (max-width: 768px) {
+  .oab-floating-badge {
+    bottom: 15px;
+    left: 15px;
+    padding: 0.6rem 1rem;
+    border-width: 1px;
+  }
+
+  .oab-number-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* ==================== TIPOGRAFIA DOS TÍTULOS (NOTO SERIF) ==================== */
+h1,
+h2,
+h3,
+h4,
+.modal-title,
+.booking-card-title {
+  font-family: 'Noto Serif', serif !important;
+  font-weight: 700 !important;
+  /* Define o peso Bold ideal para leitura em telas escuras */
+}
+
+.modal-title,
+h1 {
+  font-weight: 800 !important;
+}
+
+/* ==================== REMOVER LINKS DOS CARDS DE SERVIÇO ==================== */
+/* Substitua pelo nome da classe usada nessas frases vermelhas */
+.cards-grid a.card-link,
+.cards-grid .btn-link,
+.cards-grid span[class*="link"] {
+  display: none !important;
+}
+
+.card-link {
+  display: none !important;
+}
+
+/* ==================== OTIMIZAÇÃO DA SEÇÃO DE AVALIAÇÕES ==================== */
+
+/* 1. Compacta o contêiner geral da seção */
+.reviews-section,
+.testimonials-section,
+section[class*="avaliacao"] {
+  padding-top: 3.5rem !important;
+  /* Reduzido drasticamente para o título subir */
+  padding-bottom: 3.5rem !important;
+  /* Deixa a colagem com a próxima seção mais fluida */
+}
+
+/* 2. Aproxima o título principal do selo de nota */
+.reviews-section h2,
+.reviews-section .section-title {
+  margin-bottom: 0.5rem !important;
+  /* Diminui a distância para a nota 4.9 */
+}
+
+/* 3. Ajusta o bloco da nota (4.9 + estrelas) para não empurrar os cards */
+.rating-box,
+.reviews-score-container,
+.google-rating-summary,
+div[class*="nota"] {
+  margin-bottom: 1.5rem !important;
+  /* Reduz o espaço gigante que havia antes dos cards */
+}
+
+.rating-box h3,
+.rating-box .score-number,
+.google-rating-summary .rating-number {
+  font-size: 2.2rem !important;
+  /* Ajuste sutil no tamanho do '4.9' para harmonizar */
+  margin-bottom: 0.2rem !important;
+}
+
+/* 4. Aproxima sutilmente as setas laterais de navegação do carrossel */
+.carousel-btn,
+.slider-arrow {
+  transform: translateY(-50%);
+  /* Garante que continuem centralizadas verticalmente */
+}
+
+.prev-arrow {
+  left: 0.5rem !important;
+}
+
+.next-arrow {
+  right: 0.5rem !important;
+}
+
+/* ==================== OTIMIZAÇÃO DA SEÇÃO CANAIS DIRETOS ==================== */
+
+/* 1. Compacta o contêiner geral da seção */
+.channels-section,
+.contact-channels,
+.contact-section,
+section[class*="canais-diretos"],
+section[class*="contato"] {
+  padding-top: 3.5rem !important;
+  /* Reduz o espaço fantasma no topo */
+  padding-bottom: 3.5rem !important;
+  /* Aproxima com elegância da próxima seção ou footer */
+}
+
+/* 2. Aproxima o título principal dos cards ou botões de contato */
+.channels-section h2,
+.channels-section .section-title,
+.contact-section h2,
+.contact-section .section-title,
+section[class*="canais-diretos"] h2 {
+  margin-bottom: 1.5rem !important;
+  /* Diminui a distância para os cards de canais */
+}
+
+/* 3. Caso haja um subtítulo abaixo do título principal, ajusta o respiro */
+.channels-section .section-subtitle,
+.contact-section .contact-panel-p,
+section[class*="canais-diretos"] p.subtitle {
+  margin-bottom: 1.25rem !important;
+  margin-top: -0.25rem !important;
+}
+
+/* 4. Enxuga o espaçamento interno (padding) dos mini cards de canais, se houver */
+.channel-card,
+.contact-method-card {
+  padding: 1.5rem !important;
+  /* Deixa os blocos de e-mail/whats mais compactos */
+}
+
+/* ==================== UX/UI RECALIBRATION: TIPOGRAFIA E RITMO ==================== */
+
+/* 1. Reset e Padronização dos Títulos Grandes (Noto Serif) */
+h1,
+h2,
+h3,
+.section-title {
+  font-family: 'Noto Serif', serif !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.25 !important;
+  margin-top: 0 !important;
+}
+
+/* 2. Controle Sólido de Subtítulos (Aproxima e melhora leitura) */
+.section-subtitle,
+.scheduler-p,
+.contact-panel-p {
+  font-size: 1rem !important;
+  color: #a0aec0 !important;
+  line-height: 1.5 !important;
+  margin-top: 0.5rem !important;
+  /* Aproxima o parágrafo do título */
+  margin-bottom: 2rem !important;
+  /* Dá o espaçamento ideal antes do conteúdo iniciar */
+}
+
+/* 3. Aplicação Exclusiva do Dourado nas Frases de Contexto (Tags) */
+.section-tagline,
+.tag-dourada {
+  color: #d4af37 !important;
+  /* Retorno ao dourado refinado */
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  display: inline-block !important;
+  margin-bottom: 0.4rem !important;
+  /* Cola a tag logo acima do título principal */
+}
+
+/* Limpa efeitos fantasmas em outras partes para não espalhar o vermelho/dourado por acidente */
+.booking-card label,
+.booking-card span,
+.benefit-list span {
+  color: inherit;
+}
+
+/* ==================== SEGURANÇA DE FLUXO: OCULTAR CARD 7 ==================== */
+
+/* Oculta o card excedente da gestante no index, mantendo apenas os 6 artigos na Home */
+.rights-grid article:nth-child(7),
+#art-gestante-home {
+  display: none !important;
+}
+
+/* ==================== COMPACTAÇÃO DE SEÇÕES DE PÁGINA ==================== */
+
+.section-padding,
+.reviews-section,
+.contact-section,
+.scheduler-section {
+  padding-top: 3.5rem !important;
+  /* Redução de espaços mortos no topo */
+  padding-bottom: 3.5rem !important;
+  /* Redução de espaços mortos na base */
+}
+
+/* Alinhamento compacto da nota do Google (4.9) */
+.google-rating-summary {
+  margin-top: 0.4rem !important;
+  margin-bottom: 1.5rem !important;
+  /* Diminui a distância antes de começarem os cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rating-number {
+  font-size: 2.2rem !important;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rating-stars {
+  color: #ff9800;
+  /* Cor padrão ouro/estrela do Google */
+  font-size: 1.1rem;
+}
+
+/* ==================== AJUSTE COMPLETO DE UX/UI: DOURADO REFINADO ==================== */
+
+/* 1. Aplicação do dourado estritamente nas micro-frases/badges de contexto */
+.section-badge,
+.section-badge span,
+.oab-badge,
+.rights-tagline {
+  color: #d4af37 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+}
+
+/* 2. Garante que os títulos principais (h2, h3) das seções permaneçam brancos */
+.section-title,
+.about-title,
+.rights-title,
+.reviews-title,
+.scheduler-title,
+.contact-panel-title,
+.booking-card-title {
+  color: #ffffff !important;
+  font-family: 'Playfair Display', 'Noto Serif', serif !important;
+}
+
+/* 3. Mantém os parágrafos, listas e textos de suporte em cinza legível */
+.section-subtitle,
+.about-p,
+.rights-p,
+.scheduler-p,
+.contact-panel-p {
+  color: #a0aec0 !important;
+}
+
+/* ==================== AJUSTE DA PÍLULA HERO (BADGE) ==================== */
+
+/* Ajusta o contêiner da pílula (borda sutil e espaçamento interno) */
+.hero-section .badge-experience {
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  /* Deixa a borda dourada bem sutil */
+  background: rgba(212, 175, 55, 0.03) !important;
+  /* Fundo dark com leve reflexo dourado */
+  padding: 0.4rem 1.2rem !important;
+  /* Reduz o preenchimento para encolher a pílula */
+}
+
+/* Força a cor dourada exata e diminui o tamanho da letra */
+.hero-section .badge-text,
+.hero-section .badge-experience span {
+  color: #d4af37 !important;
+  /* Dourado vívido solicitado */
+  font-size: 0.75rem !important;
+  /* Diminui o tamanho da letra para um visual mais refinado */
+  font-weight: 600 !important;
+  /* Peso ideal para não sumir no fundo escuro */
+  letter-spacing: 1.5px !important;
+  /* Mantém o espaçamento nobre entre as letras */
+  text-transform: uppercase !important;
+}
+
+/* ==================== UNIFICAÇÃO TIPOGRÁFICA (APENAS NOTO SERIF) ==================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-title,
+.about-title,
+.rights-title,
+.reviews-title,
+.scheduler-title,
+.contact-panel-title,
+.booking-card-title {
+  /* Remove a Playfair e blinda apenas a Noto Serif com fallback genérico serif */
+  font-family: 'Noto Serif', serif !important;
+  font-weight: 700 !important;
+}
+
+/* ==================== RECALIBRAÇÃO DE DESIGN: SOFT LIGHT PREMIUM ==================== */
+
+/* 1. SEÇÕES COM FUNDO CLARO (#fafafa) */
+.practice-section,
+.scheduler-section,
+section[class*="atuacao"],
+section[class*="agendamento"] {
+  background-color: #fafafa !important;
+  /* O branco perfeito solicitado */
+  color: #2d3748 !important;
+  /* Texto escuro para leitura perfeita */
+}
+
+/* Títulos e subtítulos das seções claras */
+.practice-section .section-title,
+.scheduler-section .section-title,
+.scheduler-intro h2 {
+  color: #1a202c !important;
+}
+
+.practice-section .section-subtitle,
+.scheduler-p {
+  color: #4a5568 !important;
+}
+
+/* 2. CARDS E MODAIS EM BRANCO PURO COM ELEVAÇÃO (Sombra UX) */
+.practice-card,
+.modal-backdrop .modal-card,
+.booking-card {
+  background: #ffffff !important;
+  /* Branco puro para destacar do fundo #fafafa */
+  border: 1px solid #e2e8f0 !important;
+  /* Borda extremamente sutil */
+  border-radius: 12px !important;
+
+  /* Sombra cirúrgica para dar profundidade e efeito de elevação */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 8px rgba(0, 0, 0, 0.02) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Efeito sutil de hover nos cards de especialidade para engajamento */
+.practice-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Ajuste dos textos dentro dos Cards/Modais Claros */
+.practice-card .card-title,
+.modal-card .modal-title,
+.booking-card-title {
+  color: #1a202c !important;
+  /* Títulos internos em grafite escuro */
+}
+
+.practice-card .card-body-text,
+.modal-card .modal-body-content,
+.modal-card p {
+  color: #4a5568 !important;
+  /* Texto de leitura fluido e confortável */
+}
+
+/* Ícones das especialidades */
+.card-icon-box i {
+  color: #e53e3e !important;
+  /* Mantém o vermelho clássico nos ícones */
+}
+
+/* Links internos de ação nos cards */
+.card-link {
+  color: #e53e3e !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* 3. MANUTENÇÃO DO CINZA NOBRE (#16161a) NAS SEÇÕES ESCURAS */
+body,
+.hero-section,
+.about-section,
+.reviews-section,
+.contact-section,
+.main-footer {
+  background-color: #16161a !important;
+  /* O cinza estável do escritório */
+}
+
+/* ==================== REFAFINAMENTO DE UX/UI: TABS E CARD HOVER ==================== */
+
+/* 1. Transforma a barra preta antiga em uma pílula clara harmônica */
+.tab-control-wrapper {
+  background: #ffffff !important;
+  /* Branco puro idêntico aos cards */
+  border: 1px solid #e2e8f0 !important;
+  /* Borda sutil de unificação */
+  border-radius: 50px !important;
+  /* Mantém o formato arredondado de pílula */
+  padding: 6px !important;
+  /* Espaçamento interno para os botões respirarem */
+  display: inline-flex !important;
+  gap: 4px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+  /* Sombra levíssima de integração */
+  margin-bottom: 2.5rem !important;
+}
+
+/* 2. Ajusta o comportamento dos botões dentro da pílula */
+.tab-btn {
+  background: transparent !important;
+  color: #4a5568 !important;
+  /* Texto cinza elegante para o botão inativo */
+  border: none !important;
+  border-radius: 40px !important;
+  padding: 0.6rem 1.5rem !important;
+  font-weight: 600 !important;
+  transition: all 0.25s ease !important;
+}
+
+/* Estado Ativo (Selecionado): Mantém o destaque vermelho clássico */
+.tab-btn.active {
+  background: #e53e3e !important;
+  /* O vermelho de conversão do escritório */
+  color: #ffffff !important;
+  /* Letra branca para leitura impecável */
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.25) !important;
+}
+
+/* 3. Correção do Ícone nos Cards de Especialidade ao interagir */
+.practice-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Força a caixa do ícone a ter um fundo suave e o ícone vermelho por padrão */
+.card-icon-box {
+  background: rgba(229, 62, 62, 0.06) !important;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease !important;
+}
+
+.card-icon-box i {
+  color: #e53e3e !important;
+  font-size: 1.25rem;
+  transition: all 0.25s ease !important;
+}
+
+/* Mágica de UX: Quando passar o mouse no Card, a caixinha fica vermelha e o ícone fica BRANCO */
+.practice-card:hover .card-icon-box {
+  background: #e53e3e !important;
+  /* Inverte o fundo para vermelho cheio */
+  box-shadow: 0 6px 15px rgba(229, 62, 62, 0.3) !important;
+}
+
+.practice-card:hover .card-icon-box i {
+  color: #ffffff !important;
+  /* O ícone vira branco brilhante, como você planejou */
+}
+
+/* ==================== COMPACTAÇÃO MATERIAL DESIGN (GRADE DE 8px) ==================== */
+
+/* 1. Redução do Padding Geral das Seções Claras */
+.practice-section,
+.scheduler-section,
+section[class*="atuacao"],
+section[class*="agendamento"] {
+  padding-top: 3rem !important;
+  /* 48px - Altura ideal de respiro para o topo */
+  padding-bottom: 3rem !important;
+  /* 48px - Base compacta */
+}
+
+/* 2. Ajuste do Cabeçalho da Seção (Aproximação Material UI) */
+.section-header {
+  margin-bottom: 2rem !important;
+  /* 32px - Distância exata até as abas/formulário */
+}
+
+.section-tagline,
+.tag-dourada {
+  margin-bottom: 0.5rem !important;
+  /* 8px - Cola a micro-tag no título principal */
+}
+
+.section-title {
+  margin-bottom: 0.75rem !important;
+  /* 12px - Mantém o subtítulo logo abaixo */
+}
+
+.section-subtitle {
+  margin-bottom: 0 !important;
+  /* Zera a margem inferior para dar o controle ao wrapper das abas */
+}
+
+/* 3. Ajuste do Wrapper das Abas (Tabs) */
+.tab-control-wrapper {
+  margin-top: 1.5rem !important;
+  /* 24px - Distância controlada do texto de apoio */
+  margin-bottom: 2rem !important;
+  /* 32px - Distância para o início da grade de cards */
+}
+
+/* 4. Densidade de Informação nos Cards de Especialidade */
+.practice-grid,
+.practice-cards-grid {
+  gap: 1rem !important;
+  /* 16px - Grid mais compacta e conectada */
+}
+
+.practice-card {
+  padding: 1.5rem !important;
+  /* 24px - Preenchimento interno Material Standard */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem !important;
+  /* 12px - Espaçamento interno entre elementos do card */
+}
+
+/* Ajusta as margens dos textos internos do card para seguir o fluxo padrão de 8px */
+.practice-card .card-icon-box {
+  margin-bottom: 0.25rem !important;
+  /* 4px */
+}
+
+.practice-card .card-title {
+  margin: 0 !important;
+  font-size: 1.15rem !important;
+  /* Ajuste sutil de proporção */
+}
+
+.practice-card .card-body-text {
+  margin: 0 0 0.5rem 0 !important;
+  /* 8px de respiro antes do link de ação */
+  font-size: 0.875rem !important;
+  /* Fonte levemente menor para aumentar a densidade */
+  line-height: 1.45 !important;
+}
+
+/* ==================== REFINAMENTO DE COMPACTAÇÃO (MATERIAL UI) ==================== */
+
+/* 1. Aumenta ligeiramente a pílula de seleção (Largura e respiro interno) */
+.tab-control-wrapper {
+  padding: 8px !important;
+  /* Passa de 6px para 8px, criando uma borda interna mais robusta */
+  gap: 8px !important;
+  /* Cria mais distanciamento horizontal entre os dois botões */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Dá mais espaço interno para as palavras "Para o Trabalhador" e "Para Empresas" respirarem */
+.tab-btn {
+  padding: 0.75rem 2rem !important;
+  /* Aumenta o tamanho horizontal e vertical dos botões individuais */
+  font-size: 0.9rem !important;
+  /* Equilibra o tamanho da fonte com o tamanho da pílula */
+}
+
+/* 2. Leve esticada vertical na altura interna dos cartões (Modais de Atuação) */
+.practice-card {
+  padding: 2rem 1.5rem !important;
+  /* Aumenta o padding do topo e da base para 2rem (32px), esticando a altura */
+  min-height: 280px !important;
+  /* Define uma altura mínima estável para alinhar a base de todos os cards da fileira */
+  justify-content: space-between !important;
+  /* Garante que o link de ação fique fixo na base e o texto no topo */
+}
+
+/* ==================== EXPANSÃO MAX PREMIUM DOS CARDS ==================== */
+
+/* Ampliação da estrutura física e do respiro interno dos cartões */
+.practice-card {
+  padding: 3rem 1.75rem !important;
+  /* 48px de respiro no topo/base e 28px nas laterais */
+  min-height: 360px !important;
+  /* Altura mínima estendida para suportar textos longos confortavelmente */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between !important;
+  /* Garante o alinhamento mecânico perfeito da fileira */
+}
+
+/* ==================== HARMONIZAÇÃO E ALINHAMENTO SIMÉTRICO CRÍTICO ==================== */
+
+/* 1. Recupera o tamanho imponente, esticado e robusto da segunda imagem */
+.practice-card {
+  padding: 3.5rem 2rem !important;
+  /* Preenchimento generoso para esticar o tamanho dos cards */
+  min-height: 440px !important;
+  /* Restaura a mesma proporção e imponência de altura do tema escuro */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  /* Alinha o fluxo de cima para baixo */
+  gap: 1.25rem !important;
+  /* Espaçamento fixo e idêntico entre os blocos internos */
+}
+
+/* 2. O segredo do alinhamento: Blinda a área do título para estabilizar o texto abaixo */
+.practice-card .card-title {
+  margin: 0 !important;
+  font-size: 1.35rem !important;
+  /* Mantém o título imponente */
+  line-height: 1.3 !important;
+  min-height: 3.5rem !important;
+  /* Cria um bloco invisível de altura fixa para os títulos */
+  display: flex;
+  align-items: center;
+  /* Centraliza verticalmente títulos de 1 ou 2 linhas */
+}
+
+/* 3. Garante que os parágrafos comecem rigorosamente na mesma linha horizontal */
+.practice-card .card-body-text {
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+  /* Escaneabilidade limpa e legível */
+  line-height: 1.6 !important;
+  flex-grow: 1;
+  /* Faz o texto preencher o espaço empurrando o botão para a base */
+}
+
+/* 4. Alinhamento da base */
+.practice-card .card-link {
+  margin-top: auto !important;
+  /* Força o "Analisar meu caso" a ficar cravado na mesma linha na base */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==================== EFEITO HOVER: NEON GLOW SUAVE ==================== */
+
+.practice-card:hover {
+  transform: translateY(-5px) !important;
+  /* Eleva o card sutilmente para interagir com o usuário */
+
+  /* Sombra vermelha bem fraquinha, usando a cor #e53e3e diluída em opacidade (rgba) */
+  box-shadow: 0 15px 35px rgba(229, 62, 62, 0.08),
+    0 5px 15px rgba(229, 62, 62, 0.04) !important;
+
+  border-color: rgba(229, 62, 62, 0.2) !important;
+  /* A bordinha ganha um leve toque vermelho também */
+}
+
+/* ==================== UPGRADE DE PROPORÇÃO E CENTRALIZAÇÃO DOS ÍCONES ==================== */
+.card-icon-box {
+  background: rgba(229, 62, 62, 0.06) !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 10px !important;
+
+  /* Centraliza a caixinha em relação ao card */
+  margin: 0 auto 1.25rem auto !important;
+
+  /* Centraliza o ícone (desenho) dentro da caixinha */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  transition: all 0.25s ease !important;
+}
+
+/* Garante o tamanho correto do ícone interno */
+.card-icon-box i {
+  color: #e53e3e !important;
+  font-size: 1.5rem !important;
+  margin: 0 !important;
+  /* Remove qualquer resquício de margem que empurre o ícone */
+  padding: 0 !important;
+}
+
+
+.practice-card {
+  text-align: center !important;
+  align-items: center !important;
+}
+
+/* ==================== REESTRUTURAÇÃO COMPLETA DE CORES (RITMO DE UX) ==================== */
+
+/* 1. SEÇÕES CLARAS (#fafafa) - Atuação, Avaliações e Canais Diretos */
+.practice-section,
+.reviews-section,
+.contact-section,
+section[class*="atuacao"],
+section[class*="avaliacao"],
+section[class*="contato"] {
+  background-color: #fafafa !important;
+  color: #2d3748 !important;
+  padding-top: 3rem !important;
+  /* Mantém o topo Material Design de 48px */
+  padding-bottom: 4rem !important;
+  /* Aumentado de 3rem para 4rem (64px) para respiro premium da base */
+}
+
+/* Força os títulos das seções claras para o grafite escuro */
+.practice-section .section-title,
+.reviews-section .section-title,
+.contact-section .section-title {
+  color: #1a202c !important;
+}
+
+/* Força os textos de apoio/subtítulos das seções claras para cinza escuro */
+.practice-section .section-subtitle,
+.reviews-section .section-subtitle,
+.contact-section .contact-panel-p {
+  color: #4a5568 !important;
+}
+
+/* 2. CARDS CLAROS COM ELEVAÇÃO EM BRANCO PURO (Efeito das Avaliações e Contatos) */
+.review-card,
+.contact-info-panel-left,
+.contact-details-stack,
+.detail-item-modern {
+  background: #ffffff !important;
+  /* Branco puro se destacando do #fafafa */
+  border: 1px solid #e2e8f0 !important;
+  /* Borda cirúrgica sutil */
+  border-radius: 12px !important;
+  color: #2d3748 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+  /* Sombra leve de elevação */
+}
+
+/* Ajustes textuais internos dos cards de Avaliação e Canais Diretos */
+.review-name,
+.detail-label {
+  color: #1a202c !important;
+  /* Nomes e rótulos escuros e legíveis */
+}
+
+.review-text,
+.detail-val,
+.review-profile {
+  color: #4a5568 !important;
+  /* Depoimentos e informações comerciais fluidas */
+}
+
+/* Upgrade nos Ícones de Canais Diretos e Avaliações */
+.detail-icon-box {
+  background: rgba(229, 62, 62, 0.06) !important;
+  /* Caixa sutil vermelha */
+  color: #e53e3e !important;
+  /* Ícone vermelho em perfeita harmonia clara */
+  border-radius: 8px;
+}
+
+/* Efeito Hover nos cards de avaliação (mesmo Neon Glow dos serviços) */
+.review-card:transition {
+  transition: all 0.25s ease !important;
+}
+
+.review-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 15px 35px rgba(229, 62, 62, 0.08) !important;
+  border-color: rgba(229, 62, 62, 0.2) !important;
+}
+
+/* 3. RETORNO AO CINZA NOBRE (#16161a) - Seção Agendamento */
+.scheduler-section,
+section[class*="agendamento"] {
+  background-color: #16161a !important;
+  /* O cinza perfeito original que você escolheu */
+  color: #ffffff !important;
+}
+
+/* Garante os títulos e textos de apoio brancos/claros na seção de agendamento escura */
+.scheduler-section .section-title,
+.scheduler-intro h2,
+.booking-card-title {
+  color: #ffffff !important;
+}
+
+.scheduler-p,
+.benefit-item span {
+  color: #cbd5e0 !important;
+}
+
+/* Preserva o Form em Branco Puro para saltar aos olhos dentro da seção escura (Foco de Conversão) */
+.booking-card {
+  background: #ffffff !important;
+  border: 1px solid #232329 !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.booking-card .step-label,
+.booking-card .card-main-text,
+.booking-card .hour-card,
+.booking-card span {
+  color: #1a202c !important;
+  /* Texto interno do formulário escuro para fácil preenchimento */
+}
+
+.booking-divider {
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+/* ==================== UX/UI CALIBRATION: SEÇÃO AVALIAÇÕES ==================== */
+
+/* 1. Ajuste de Contraste e Cor do Número 4.9 do Google */
+.google-rating-summary .rating-number {
+  color: #1a202c !important;
+  /* Grafite escuro para leitura perfeita no fundo #fafafa */
+  font-family: 'Inter', sans-serif !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+}
+
+/* 2. Correção e Alinhamento dos Cards de Avaliação (Mesmo estilo dos Modais) */
+.review-card {
+  background: #ffffff !important;
+  /* Branco puro elevado */
+  border: 1px solid #e2e8f0 !important;
+  /* Borda sutil de acabamento */
+  border-radius: 12px !important;
+  padding: 2rem !important;
+  /* Respiro interno confortável */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+  /* Sombra base sutil */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* Efeito Hover com a sombrinha vermelha bem fraquinha da paleta */
+.review-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(229, 62, 62, 0.2) !important;
+  box-shadow: 0 15px 35px rgba(229, 62, 62, 0.08),
+    0 5px 15px rgba(229, 62, 62, 0.04) !important;
+}
+
+/* 3. Ajuste dos Botões de Passar (Setas) do Carrossel */
+.reviews-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2rem !important;
+  /* Cria um distanciamento físico de 32px entre as setas e os modais de avaliação */
+  margin-top: 1.5rem !important;
+}
+
+/* Estilização das Setas Laterais */
+.slider-arrow {
+  background: #ffffff !important;
+  /* Fundo branco idêntico ao modal */
+  color: #4a5568 !important;
+  /* Seta em tom neutro escuro */
+  border: 1px solid #e2e8f0 !important;
+  width: 46px !important;
+  /* Tamanho perfeito para clique confortável */
+  height: 46px !important;
+  border-radius: 50% !important;
+  /* Formato perfeitamente circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+  /* Sombra leve para flutuar */
+  transition: all 0.25s ease !important;
+  z-index: 10;
+}
+
+/* Efeito Hover nas Setas com a sombrinha vermelha fraquinha */
+.slider-arrow:hover {
+  color: #e53e3e !important;
+  /* Seta acende em vermelho ao passar o mouse */
+  border-color: rgba(229, 62, 62, 0.2) !important;
+  box-shadow: 0 8px 20px rgba(229, 62, 62, 0.12) !important;
+  /* Aura vermelha sutil */
+  transform: scale(1.05);
+}
+
+/* ==================== AJUSTES CIRÚRGICOS: SEÇÃO AVALIAÇÕES ==================== */
+
+/* 1. Aumenta o tamanho e respiro vertical do bloco em branco (#fafafa) */
+.reviews-section,
+section[class*="avaliacao"] {
+  padding-top: 4.5rem !important;
+  /* Dá mais imponência à entrada da seção */
+  padding-bottom: 4.5rem !important;
+  /* Estica a base clara */
+}
+
+/* 2. Estilização e aproximação das estrelas no topo */
+.rating-stars-top {
+  color: #ff9800 !important;
+  /* Ouro clássico do Google */
+  font-size: 1.25rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+  /* Espaço harmônico antes dos cards começarem */
+  letter-spacing: 2px;
+}
+
+/* 3. Correção Crítica das Setas (Destaque visual impecável no fundo claro) */
+.slider-arrow {
+  background: #16161a !important;
+  /* Fundo escuro para a seta pular e aparecer na tela */
+  color: #ffffff !important;
+  /* Seta em branco puro para contraste total */
+  border: 1px solid #2d3748 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  /* Sombra firme corporativa */
+  transition: all 0.2s ease !important;
+}
+
+/* Hover da Seta: Fica vermelha com aura muito discreta */
+.slider-arrow:hover {
+  background: #e53e3e !important;
+  /* Inverte para o vermelho clássico */
+  border-color: #e53e3e !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 14px rgba(229, 62, 62, 0.2) !important;
+}
+
+/* 4. Suavização Radical da Sombra Vermelha dos Modais (Glow bem fraquinho) */
+.practice-card:hover,
+.review-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(229, 62, 62, 0.15) !important;
+
+  /* Reduzido drasticamente a opacidade para 0.03 e 0.01 (Apenas um sopro de vermelho) */
+  box-shadow: 0 12px 24px rgba(229, 62, 62, 0.04),
+    0 4px 10px rgba(229, 62, 62, 0.01) !important;
+}
+
+/* ==================== AJUSTE CRÍTICO DE UX: ESTABILIDADE DO CARROSSEL ==================== */
+
+/* 1. CORREÇÃO DO CORTE INFERIOR DOS MODAIS */
+.reviews-section,
+section[class*="avaliacao"] {
+  /* Adiciona uma margem extra interna para a sombra respirar e não ser cortada pelo overflow */
+  padding-bottom: 5.5rem !important;
+}
+
+.reviews-slider-wrapper {
+  position: relative;
+  display: block;
+  /* Altera o fluxo para permitir o posicionamento absoluto das setas */
+  width: 100%;
+  padding: 0 60px !important;
+  /* Cria o espaço exato nas laterais para abrigar as setas fora dos cards */
+  box-sizing: border-box;
+}
+
+.reviews-slider-container {
+  overflow: visible !important;
+  /* Permite que as sombras laterais e inferiores apareçam sem cortes */
+  clip-path: inset(-30px 0px -30px 0px);
+  /* Truque de UI: esconde os cards nas pontas do site, mas deixa a sombra de baixo respirar livremente */
+}
+
+/* 2. FIXAÇÃO E ESPAÇAMENTO DAS SETAS (FIXAS E 12px DE DISTÂNCIA) */
+.slider-arrow {
+  position: absolute !important;
+  top: 50% !important;
+  /* Centraliza verticalmente na metade exata do card */
+  transform: translateY(-50%) !important;
+  /* Mantém a bolinha cravada no centro */
+  background: #16161a !important;
+  color: #ffffff !important;
+  border: 1px solid #2d3748 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+  /* Remove qualquer transição de posição */
+}
+
+/* Seta Esquerda: Colada a 12px de distância antes do primeiro card */
+.prev-arrow {
+  left: 4px !important;
+  /* Margem calculada com base no padding do contêiner para ficar a 12px exatos */
+}
+
+/* Seta Direita: Colada a 12px de distância após o último card */
+.next-arrow {
+  right: 4px !important;
+  /* Margem calculada para manter a mesma simetria de 12px */
+}
+
+/* 3. BLINDAGEM CONTRA O PULO DO CLIQUE (BOLINHA COMPLETAMENTE FIXA) */
+.slider-arrow:hover {
+  background: #e53e3e !important;
+  border-color: #e53e3e !important;
+  color: #ffffff !important;
+  /* Sem alterar o scale ou posições para a bolinha não mexer um milímetro */
+  box-shadow: 0 6px 14px rgba(229, 62, 62, 0.2) !important;
+}
+
+/* Garante que no momento do clique (active) e após o clique (focus) ela continue estática */
+.slider-arrow:active,
+.slider-arrow:focus {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  /* Trava mecânica do centro */
+  outline: none !important;
+}
+
+/* ==================== RECALIBRAÇÃO DE CORES: AGENDA CLARA & CONTATO ESCURO ==================== */
+
+/* 1. SEÇÃO DE AGENDAMENTO (Agora no fundo Claro #fafafa) */
+.scheduler-section,
+section[class*="agendamento"] {
+  background-color: #fafafa !important;
+  /* Invertido para o branco premium */
+  color: #2d3748 !important;
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+/* Títulos e textos de apoio do Agendamento Claro */
+.scheduler-section .section-title,
+.scheduler-intro h2 {
+  color: #1a202c !important;
+  /* Grafite escuro para leitura perfeita */
+}
+
+.scheduler-p,
+.benefit-item span {
+  color: #4a5568 !important;
+}
+
+/* O Formulário dentro do Agendamento (Branco Puro com Elevação) */
+.booking-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04) !important;
+  /* Sombra leve de modal */
+}
+
+.booking-card .step-label,
+.booking-card .card-main-text,
+.booking-card .hour-card,
+.booking-card span {
+  color: #2d3748 !important;
+  /* Texto interno escuro para preenchimento confortável */
+}
+
+.booking-card-title {
+  color: #1a202c !important;
+}
+
+.booking-divider {
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+
+/* 2. SEÇÃO CANAIS DIRETOS / ESTAMOS À DISPOSIÇÃO (Retorna ao Cinza Nobre #16161a) */
+.contact-section,
+section[class*="contato"] {
+  background-color: #16161a !important;
+  /* O cinza estável original do projeto */
+  color: #ffffff !important;
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+/* Títulos e textos de apoio dos Canais Diretos Escuros */
+.contact-section .section-title {
+  color: #ffffff !important;
+}
+
+.contact-section .contact-panel-p {
+  color: #cbd5e0 !important;
+  /* Cinza claro para suporte no fundo escuro */
+}
+
+/* Cards de Contato Adaptados para o Tema Escuro Nobre */
+.contact-info-panel-left,
+.contact-details-stack,
+.detail-item-modern {
+  background: #1f1f24 !important;
+  /* Um cinza ligeiramente mais claro que o fundo para dar relevo */
+  border: 1px solid #2d3748 !important;
+  /* Borda escura sutil */
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Textos internos dos blocos de contato */
+.detail-label {
+  color: #a0aec0 !important;
+  /* Rótulo em cinza médio */
+}
+
+.detail-val {
+  color: #ffffff !important;
+  /* Informações (telefones/e-mails) em branco brilhante */
+}
+
+/* Ícones dos Canais Diretos no Escuro */
+.detail-icon-box {
+  background: rgba(229, 62, 62, 0.12) !important;
+  /* Fundo vermelho levemente mais visível no escuro */
+  color: #e53e3e !important;
+  /* Ícone vermelho clássico focado em conversão */
+}
+
+/* ==================== NOVO DESIGN DO FORMULÁRIO DIRECT WHATSAPP ==================== */
+
+/* Centraliza o card e limita a largura máxima para dar um aspecto elegante de formulário */
+.booking-card {
+  max-width: 580px !important;
+  margin: 0 auto !important;
+  /* Centraliza perfeitamente na seção clara */
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 2.5rem !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04) !important;
+}
+
+.booking-card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.booking-card-subtitle {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* Espaçamento dos blocos do formulário */
+.form-group-modern {
+  margin-bottom: 1.5rem;
+}
+
+.step-label {
+  display: block;
+  font-weight: 600;
+  color: #1a202c !important;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* Inputs de texto premium */
+.booking-text-input {
+  width: 100%;
+  padding: 0.85rem 1rem !important;
+  background: #fafafa !important;
+  border: 1px solid #cbd5e0 !important;
+  border-radius: 8px !important;
+  color: #2d3748 !important;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.booking-text-input:focus {
+  outline: none;
+  border-color: #e53e3e !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+/* Grid de seleção Perfil (Trabalhador/Empresa) lateral */
+.profile-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.booking-selector-card {
+  border: 1px solid #cbd5e0 !important;
+  background: #fafafa !important;
+  padding: 1rem !important;
+  border-radius: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Estilo para quando a label ou card estiver ativo/marcado (se você usar lógica JS neles) */
+.booking-selector-card:hover {
+  border-color: #e53e3e !important;
+}
+
+/* O Super Botão de Conversão WhatsApp */
+.btn-whatsapp-submit {
+  width: 100%;
+  background: #25d366 !important;
+  /* Verde oficial do WhatsApp */
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3) !important;
+  transition: all 0.25s ease !important;
+}
+
+.btn-whatsapp-submit:hover {
+  background: #20ba5a !important;
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp-submit i {
+  font-size: 1.4rem;
+}
+
+/* ==================== FORMULÁRIO DE AGENDAMENTO: FEEDBACK E CONTRASTE ==================== */
+
+/* 1. Sombra Vermelha Leve e Permanente ao Fundo do Card de Agendamento */
+.booking-card {
+  max-width: 580px !important;
+  margin: 0 auto !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 2.5rem !important;
+
+  /* Sombra vermelha bem suave e elegante no fundo fixo do card */
+  box-shadow: 0 15px 35px rgba(229, 62, 62, 0.04),
+    0 5px 15px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* 2. Base do Seletor de Perfil (Trabalhador/Empresa) - Estado Inicial Neutro */
+.booking-selector-card {
+  border: 1px solid #e2e8f0 !important;
+  /* Borda cinza bem clarinha por padrão */
+  background: #ffffff !important;
+  /* Fundo branco puro acompanhando o card */
+  padding: 1.2rem 1rem !important;
+  border-radius: 8px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease !important;
+}
+
+/* Ícone e Texto em tons neutros desativados */
+.booking-selector-card i {
+  font-size: 1.4rem;
+  color: #a0aec0;
+  /* Cinza sutil indicando que não está ativo */
+  transition: all 0.2s ease !important;
+}
+
+.booking-selector-card .card-main-text {
+  color: #718096 !important;
+  /* Texto discreto inicial */
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Um leve destaque ao passar o mouse antes de clicar (Feedback de clique) */
+.booking-selector-card:hover {
+  border-color: #cbd5e0 !important;
+  background: #fafafa !important;
+}
+
+/* ==================== ATIVAÇÃO APÓS O CLIQUE (MARCADO) ==================== */
+
+/* Quando o usuário clica, o CSS ativa a cor da paleta instantaneamente */
+.booking-selector-card:has(input[type="radio"]:checked) {
+  border-color: #e53e3e !important;
+  /* Ativa a borda vermelha solicitada */
+  background: rgba(229, 62, 62, 0.04) !important;
+  /* Fundo sutil vermelho */
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.1) !important;
+}
+
+/* Altera os elementos internos do card selecionado */
+.booking-selector-card:has(input[type="radio"]:checked) i {
+  color: #e53e3e !important;
+  /* Ícone acende em vermelho */
+}
+
+.booking-selector-card:has(input[type="radio"]:checked) .card-main-text {
+  color: #e53e3e !important;
+  /* Texto acende em vermelho */
+}
+
+/* ==================== AJUSTE DE PROPORÇÃO E ESPAÇAMENTO PREMIUM ==================== */
+
+/* 1. Amplia o distanciamento entre cada bloco de contato (WhatsApp, E-mail, Endereço) */
+/* ==================== REMOÇÃO ABSOLUTA DE QUALQUER BLOCO DE FUNDO ==================== */
+
+/* 1. Zera completamente o bloco de fora (Deixa o fundo 100% transparente) */
+.contact-info-panel-left,
+div[class*="panel-left"],
+.contact-details-stack {
+  background: transparent !important;
+  /* Remove a caixa cinza de fundo */
+  border: none !important;
+  /* Remove todas as bordas externas */
+  box-shadow: none !important;
+  /* Remove qualquer sombra do bloco */
+  padding: 0 !important;
+  /* Zera preenchimentos para alinhar perfeitamente */
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem !important;
+  /* Mantém o ótimo espaçamento de 40px entre os contatos */
+}
+
+/* 2. Garante que os itens internos continuem limpos e sem blocos */
+.detail-item-modern {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem !important;
+}
+
+/* 3. Mantém apenas as bolinhas dos ícones que você aprovou no ajuste anterior */
+.detail-icon-box {
+  background: #1a1a1f !important;
+  /* Círculo escuro sutil para o ícone */
+  color: #e53e3e !important;
+  /* Símbolo em vermelho */
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0;
+  margin-top: 0.15rem !important;
+}
+
+/* 4. Expansão Tipográfica das Informações */
+.detail-text-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left !important;
+}
+
+/* As etiquetas superiores (Ex: WHATSAPP / TELEFONE) */
+.detail-label {
+  color: #a0aec0 !important;
+  font-size: 0.9rem !important;
+  /* Aumentado para 0.9rem para melhor legibilidade */
+  font-weight: 700 !important;
+  /* Peso de fonte reforçado */
+  text-transform: uppercase;
+  letter-spacing: 1.5px !important;
+  /* Espaçamento entre letras elegante */
+  margin-bottom: 0.5rem !important;
+  /* Distância perfeita até o dado abaixo */
+}
+
+/* Os dados reais (Ex: números, links e ruas) */
+.detail-val {
+  color: #ffffff !important;
+  font-size: 1.25rem !important;
+  /* Ampliado para 1.25rem (Destaque absoluto e nítido) */
+  font-weight: 500;
+  line-height: 1.6 !important;
+  /* Altura de linha confortável para o endereço não embolar */
+}
+
+/* ==================== LINKS DE DIRECIONAMENTO PARA SEO ==================== */
+
+/* Garante que o link fique cravado na base do card de forma elegante */
+.card-article-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #e53e3e !important;
+  /* Vermelho da sua paleta */
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  text-decoration: none !important;
+  margin-top: auto !important;
+  /* Empurra o link para o fim do card simetricamente */
+  transition: all 0.2s ease !important;
+}
+
+/* Efeito ao passar o mouse: a setinha vai de leve para o lado */
+.card-article-link:hover {
+  color: #b82f2f !important;
+  /* Tom ligeiramente mais escuro no hover */
+}
+
+.card-article-link i {
+  font-size: 0.85rem;
+  transition: transform 0.2s ease !important;
+}
+
+.card-article-link:hover i {
+  transform: translateX(4px);
+  /* Movimento sutil da seta para a direita */
+}
+
+/* Garante o distanciamento correto dos blocos internos contidos no topo do card */
+.card-top-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem !important;
+}
+
+/* ==================== RETORNO DO EFEITO HOVER NOS CARDS ==================== */
+
+.practice-card {
+  padding: 2.5rem 1.75rem !important;
+  /* Mantém o respiro interno premium */
+  min-height: 330px !important;
+  /* Altura compactada perfeita para o texto */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  gap: 1.25rem !important;
+  cursor: pointer !important;
+  /* Volta o cursor de "mãozinha" para indicar interatividade */
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* O efeito de sombra vermelha sutil que você pediu para recolocar */
+.practice-card:hover {
+  transform: translateY(-5px) !important;
+  /* Eleva o card suavemente */
+  border-color: rgba(229, 62, 62, 0.15) !important;
+
+  /* Sombra vermelha bem discreta e elegante (opacidade 0.04 e 0.01) */
+  box-shadow: 0 12px 24px rgba(229, 62, 62, 0.04),
+    0 4px 10px rgba(229, 62, 62, 0.01) !important;
+}
+
+/* ==================== AJUSTE DOS CARDS DO GUIA DE DIREITOS ==================== */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.blog-card-modern {
+  background: #1f1f24 !important;
+  /* Mantém o fundo cinza escuro elegante do card */
+  border: 1px solid #2d3748 !important;
+  /* Borda escura sutil */
+  border-radius: 12px !important;
+  padding: 2rem 1.75rem !important;
+  /* Espaçamento interno confortável */
+  min-height: 290px !important;
+  /* Altura perfeitamente reduzida já que não há botão na base */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  gap: 1rem !important;
+  cursor: pointer !important;
+  /* Ativa o ponteiro de mãozinha interativo */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* Aplica o mesmo efeito de aura vermelha sutil no hover */
+.blog-card-modern:hover {
+  transform: translateY(-5px) !important;
+  /* Eleva levemente o card */
+  border-color: rgba(229, 62, 62, 0.2) !important;
+  /* Destaca a bordinha em vermelho */
+
+  /* Sombra vermelha bem suave adaptada para fundos escuros */
+  box-shadow: 0 12px 24px rgba(229, 62, 62, 0.06),
+    0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Estilos adicionais para os metadados do Blog */
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.blog-badge {
+  padding: 0.35rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.badge-rescisao {
+  background: rgba(229, 62, 62, 0.15);
+  color: #e53e3e;
+}
+
+.badge-homeoffice {
+  background: rgba(49, 130, 206, 0.15);
+  color: #3182ce;
+}
+
+.badge-prevencao {
+  background: rgba(74, 85, 104, 0.15);
+  color: #cbd5e0;
+}
+
+.blog-read-time {
+  color: #a0aec0;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blog-card-title {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.blog-card-excerpt {
+  font-size: 1.05rem;
+  color: #a0aec0;
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ==================== ELEMENTO TEXTUAL ESTÁTICO DO GUIA ==================== */
+
+.static-guide-link {
+  color: #e53e3e !important;
+  /* Vermelho idêntico ao do print */
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  /* Espaçamento perfeito entre o texto e o ícone */
+  margin-top: auto !important;
+  /* Empurra o texto fixamente para a base do card */
+  pointer-events: none;
+  /* Desativa qualquer possibilidade de clique ou seleção estranha */
+  user-select: none;
+  /* Impede que o usuário selecione o texto por acidente */
+}
+
+/* Garante o tamanho harmônico do ícone do livro */
+.static-guide-link i {
+  font-size: 0.9rem !important;
+}
+
+/* ==================== BOTÃO DE WHATSAPP PRINCIPAL (HERO) ==================== */
+
+.btn-hero-whatsapp-main {
+  background: #e53e3e !important;
+  /* Fundo vermelho oficial da paleta */
+  color: #ffffff !important;
+  /* Texto em branco puro */
+  padding: 0.9rem 2.2rem !important;
+  /* Preenchimento imponente idêntico ao antigo */
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  /* Espaço perfeito entre o ícone e o texto */
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  border: 1px solid #e53e3e !important;
+  box-shadow: 0 4px 14px rgba(229, 62, 62, 0.25) !important;
+  /* Leve brilho vermelho na base */
+  transition: all 0.25s ease !important;
+  cursor: pointer;
+}
+
+/* Efeito ao passar o mouse por cima */
+.btn-hero-whatsapp-main:hover {
+  background: #c53030 !important;
+  /* Tom vermelho ligeiramente mais fechado e corporativo */
+  border-color: #c53030 !important;
+  transform: translateY(-2px);
+  /* Sutil elevação de interação */
+  box-shadow: 0 6px 20px rgba(229, 62, 62, 0.4) !important;
+  /* Brilho expande no hover */
+}
+
+/* Garante o verde oficial ou o branco no ícone do WhatsApp */
+.btn-hero-whatsapp-main i {
+  font-size: 1.2rem;
+  color: #ffffff !important;
+  /* Ícone em branco para manter a sobriedade */
+}
+
+section,
+.container,
+.about-grid,
+.scheduler-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.container {
+  width: 100% !important;
+  max-width: var(--container-width) !important;
+  /* 1200px */
+  margin-right: auto !important;
+  margin-left: auto !important;
+  /* Esses dois auto forçam o miolo a ficar sempre no centro da tela */
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
+/* ==================== BLINDAGEM DE RESPONSIVIDADE INTERMEDIÁRIA (TABLETS E MOBILE) ==================== */
+@media (max-width: 1024px) {
+
+  /* Força todas as seções a preencherem a largura total e centralizarem seus blocos na tela */
+  section,
+  header,
+  footer,
+  .main-footer,
+  .reviews-section,
+  .contact-section,
+  .scheduler-section,
+  .practice-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Garante que os miolos dos grids (Sobre, Agendamento, Contatos) virem colunas e usem 100% do espaço */
+  .about-grid,
+  .scheduler-grid,
+  .contact-two-columns-layout,
+  .footer-grid-three-columns {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 32px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Impede que o bloco descritivo do agendamento fique preso na esquerda de forma desproporcional */
+  .scheduler-intro {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Garante que o card do formulário ocupe o centro em telas de 770px */
+  .booking-card {
+    width: 100% !important;
+    max-width: 540px !important;
+    /* Tamanho limite nobre para tablets */
+    margin: 0 auto !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES) - 100% RESPONSIVO E CENTRALIZADO
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .about-grid,
+  .scheduler-grid,
+  .contact-two-columns-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-img {
+    height: 400px;
+  }
+}
+
+/* ==================== RESTAURAÇÃO DE LAYOUT DO SOBRE NÓS (DESKTOP E PC) ==================== */
+@media (min-width: 1025px) {
+
+  /* Restaura o grid original de duas colunas lado a lado no computador */
+  .about-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    /* Foto na esquerda, texto na direita */
+    gap: 4rem !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+
+  /* Garante que o contêiner visual da foto fique correto na esquerda */
+  .about-visual {
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  /* Força todo o conteúdo escrito a retornar para o alinhamento à esquerda */
+  .about-text-content {
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+
+  /* Garante que os parágrafos e títulos ocupem a linha esquerda perfeitamente */
+  .about-title,
+  .about-p {
+    text-align: left !important;
+    margin-left: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   CORREÇÃO DE LAYOUT: AGENDAMENTO (TEXTO ESQUERDA / CARD DIREITA)
+   ========================================================================== */
+
+/* 1. LAYOUT DESKTOP E NOTEBOOKS (Acima de 1024px) */
+@media (min-width: 1025px) {
+
+  /* Restaura o grid de duas colunas */
+  .scheduler-section .container.scheduler-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    /* Divide a tela exatamente ao meio */
+    gap: 4rem !important;
+    /* Distanciamento nobre entre texto e formulário */
+    align-items: center !important;
+    /* Centraliza verticalmente */
+    width: 100% !important;
+  }
+
+  /* Alinha todo o bloco de introdução à esquerda */
+  .scheduler-intro {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  /* Garante que títulos e tags fiquem cravados na esquerda */
+  .scheduler-intro h2,
+  .scheduler-intro p,
+  .scheduler-intro .section-badge,
+  .scheduler-intro .section-tagline {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  /* Alinha a lista de benefícios e ícones à esquerda */
+  .benefit-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+
+  .benefit-item {
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* Empurra o card de agendamento para a direita */
+  .scheduler-grid .booking-card {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    /* Trava na extremidade direita */
+    width: 100% !important;
+    max-width: 500px !important;
+    /* Mantém um tamanho elegante para o formulário */
+  }
+}
+
+/* ==========================================================================
+     RODAPÉ PREMIUM DESKTOP - EXATAMENTE IGUAL AO PRINT DA IMAGE_A69B06.PNG (PC 1025px+)
+     ========================================================================== */
+@media (min-width: 1025px) {
+
+  /* 1. Neutraliza o empilhamento vertical do container pai */
+  .main-footer {
+    width: 100% !important;
+    display: block !important;
+    text-align: left !important;
+  }
+
+  /* 2. Força o container de largura máxima (1200px) a se centralizar no meio do monitor do PC */
+  /* NOTA DE BLINDAGEM: Como o container do footer possui as duas classes (.container e .footer-grid-three-columns), 
+       nós fundimos as duas regras em um único seletor para que o display: grid ganhe em especificidade e não seja anulado */
+  .main-footer .container.footer-grid-three-columns {
+    display: grid !important;
+    /* Ativação pura do Grid */
+    grid-template-columns: 1.4fr 1fr 1.2fr !important;
+    /* Distribuição milimétrica baseada no print */
+    gap: 4rem !important;
+    /* Distanciamento nobre entre os quadrantes */
+    align-items: flex-start !important;
+    /* Mantém o topo das colunas alinhados de forma reta */
+    width: 100% !important;
+    max-width: var(--container-width, 1200px) !important;
+    /* Centraliza a largura máxima com o miolo do site */
+    margin-right: auto !important;
+    margin-left: auto !important;
+    /* Garante que o conjunto fique centralizado na tela */
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-top: 5rem !important;
+    padding-bottom: 4rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* COLUNA 1 (ESQUERDA) - Informações da Falce e Ícones das Redes */
+  .footer-brand-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    /* Garante o alinhamento esquerdo deste quadrante */
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .footer-brand-panel .logo-link {
+    justify-content: flex-start !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  .footer-desc {
+    text-align: left !important;
+    margin-top: 20px !important;
+    margin-bottom: 24px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    color: var(--text-muted, #94a3b8) !important;
+    max-width: 100% !important;
+  }
+
+  .footer-social-links {
+    display: flex !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    margin-left: 0 !important;
+    width: auto !important;
+  }
+
+  .footer-social-links a {
+    color: var(--text-silver, #cbd5e1) !important;
+    /* Ícones sociais mais nítidos e claros como no print */
+  }
+
+  /* COLUNA 2 (MEIO) - Navegação Rápida (Guias do Site no Centro) */
+  .footer-links-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    /* Itens começam na margem esquerda da coluna central */
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .footer-title {
+    font-family: 'Noto Serif', serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-bottom: 24px !important;
+    text-align: left !important;
+  }
+
+  .footer-links-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .footer-links-list li,
+  .footer-links-list a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  /* COLUNA 3 (DIREITA) - Credenciais e Pílulas de Segurança */
+  .footer-credentials-p {
+    text-align: left !important;
+    font-size: 0.85rem !important;
+    color: var(--text-muted, #94a3b8) !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+  }
+
+  .credentials-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    /* Mantém os retângulos alinhados à esquerda desta coluna */
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  /* Garante o formato exato de retângulos horizontais conforme o print */
+  .badge-oab,
+  .badge-lgpd {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    /* Trava a expansão lateral gerando o formato do print */
+    padding: 10px 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* BARRA INFERIOR - Copyright de ponta a ponta */
+  .footer-bottom-bar .bottom-bar-container {
+    display: flex !important;
+    flex-direction: row !important;
+    /* Exibe em linha horizontal no PC */
+    justify-content: space-between !important;
+    /* Copyright na esquerda, Termos na direita */
+    align-items: center !important;
+    width: 100% !important;
+    max-width: var(--container-width, 1200px) !important;
+    margin: 0 auto !important;
+  }
+
+  .bottom-bar-links {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* ==================== COMPACTAÇÃO EXCLUSIVA PARA TABLETS E CELULARES ==================== */
+@media (max-width: 1024px) {
+
+  /* Mantém o empilhamento vertical apenas em telas menores, onde o espaço lateral é curto */
+  .about-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+  }
+
+  .about-text-content {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  /* ==========================================================================
+     CONSERVAÇÃO MOBILE - MANTÉM O EMPILHAMENTO COESSO SÓ EM CELULARES E TABLETS
+     ========================================================================== */
+  .footer-grid-three-columns {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  .footer-brand-panel,
+  .footer-links-panel,
+  .credentials-box {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  /* ==========================================================================
+     2. LAYOUT RESPONSIVO TABLET E MOBILE (Abaixo de 1024px)
+     ========================================================================== */
+  /* Empilha os elementos (Texto em cima, Formulário embaixo) */
+  .scheduler-section .container.scheduler-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+    align-items: center !important;
+  }
+
+  .scheduler-intro {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  /* Centraliza os textos em telas menores */
+  .scheduler-intro h2,
+  .scheduler-intro p,
+  .scheduler-intro .section-badge,
+  .scheduler-intro .section-tagline {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Mantém a lista alinhada à esquerda mesmo no celular para facilitar leitura */
+  .benefit-list {
+    align-items: flex-start !important;
+    max-width: 90% !important;
+    margin: 0 auto !important;
+  }
+
+  .scheduler-grid .booking-card {
+    margin: 0 auto !important;
+    /* Centraliza o formulário */
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* 1. RESET GLOBAL DE ALINHAMENTO E CENTRALIZAÇÃO DE SEÇÕES */
+  body,
+  html {
+    overflow-x: hidden !important;
+    /* Previne qualquer rolagem lateral indesejada */
+    width: 100%;
+  }
+
+  /* Força todas as seções principais a ocuparem 100% da largura e centralizarem seus conteúdos */
+  section,
+  header,
+  footer,
+  .hero-section,
+  .about-section,
+  .scheduler-section,
+  .practice-section,
+  .reviews-section,
+  .contact-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    /* Centraliza verticalmente e horizontalmente */
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  /* 2. ENVELOPE DE SEGURANÇA (CONTÊINERES) */
+  /* Garante que o miolo de cada seção fique perfeitamente centralizado com margens de 20px nas laterais */
+  .container,
+  .hero-container,
+  .about-container,
+  .scheduler-container,
+  .practice-container,
+  .reviews-container,
+  .contact-container,
+  .about-grid,
+  .scheduler-grid,
+  .contact-two-columns-layout,
+  .footer-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. RESET DE GRIDS PARA FLUXO VERTICAL UNIFICADO */
+  .about-grid,
+  .scheduler-grid,
+  .contact-two-columns-layout,
+  .profile-cards-grid,
+  .cards-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 24px !important;
+  }
+
+  /* 4. AJUSTES ESPECÍFICOS DO HERO (TOPO DO SITE) */
+  .hero-section {
+    padding-top: 130px !important;
+    /* Espaço para o menu fixo não cobrir o título */
+    padding-bottom: 60px !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .hero-title {
+    font-size: 2.1rem !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+    text-align: center !important;
+    max-width: 100% !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .hero-ctas {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .btn-hero-whatsapp-main {
+    width: 100% !important;
+    max-width: 320px !important;
+    /* Tamanho limite confortável para o clique do polegar */
+    justify-content: center !important;
+  }
+
+  /* 5. SEÇÃO SOBRE NÓS E IMAGENS */
+  .about-img-wrapper {
+    width: 100% !important;
+    max-width: 450px !important;
+    margin: 0 auto !important;
+  }
+
+  .about-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4/3 !important;
+    object-fit: cover !important;
+  }
+
+  .badge-oab {
+    position: relative !important;
+    /* Retira o flutuante absoluto que quebrava o mobile */
+    margin-top: 15px !important;
+    left: auto !important;
+    bottom: auto !important;
+    display: inline-flex !important;
+  }
+
+  /* 6. ABAS DE ATUAÇÃO (TABS) */
+  .tab-control-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+    background: #ffffff !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+  }
+
+  .tab-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 0.8rem !important;
+  }
+
+  .practice-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .practice-card .card-title {
+    justify-content: center !important;
+  }
+
+  /* 7. MENU HAMBÚRGUER E CABEÇALHO MOBILE */
+
+  /* Força a barra do topo a ocupar toda a largura de forma fixa e isolada */
+  .main-header,
+  #navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 80px !important;
+    z-index: 9995 !important;
+    background: #0e0e10 !important;
+    /* Mantém a cor escura uniforme */
+    display: block !important;
+    /* Desativa flexbox global da seção para não esmagar */
+  }
+
+  /* Organiza os elementos internos em uma linha líquida perfeita de ponta a ponta */
+  .header-container {
+    display: flex !important;
+    flex-direction: row !important;
+    /* Força o alinhamento horizontal lado a lado */
+    align-items: center !important;
+    /* Centraliza verticalmente a logo e o botão */
+    justify-content: space-between !important;
+    /* MÁGICA: Joga a logo para a esquerda e as ações para a direita */
+
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 20px !important;
+    /* Espaçamento e margem de segurança nas bordas do visor */
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Blinda o posicionamento da Logo no canto esquerdo */
+  .logo-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .logo-link img {
+    height: 45px !important;
+    /* Altura ideal e elegante para dispositivos móveis */
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* Controla o agrupador de ações no canto direito */
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* Garante o isolamento e clique cirúrgico do Hambúrguer à direita */
+  .mobile-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    /* Linhas internas alinhadas à direita */
+    gap: 6px !important;
+
+    width: 48px !important;
+    /* Área de toque expandida contra cliques falsos */
+    height: 48px !important;
+    background: transparent !important;
+
+    position: relative !important;
+    z-index: 10005 !important;
+    /* Mantém o botão clicável acima de tudo */
+    cursor: pointer !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .mobile-toggle .bar {
+    width: 28px !important;
+    height: 3px !important;
+    background-color: #ffffff !important;
+    border-radius: 2px !important;
+    display: block !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: #0e0e10;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 998;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+  }
+
+  .nav-menu.open {
+    left: 0;
+  }
+
+  .nav-list {
+    flex-direction: column !important;
+    padding: 40px 24px !important;
+    gap: 24px !important;
+    align-items: center !important;
+  }
+
+  .header-actions .btn-nav {
+    display: none !important;
+  }
+
+  /* ==================== COMPACTAÇÃO DE ESPAÇO E ENXUGUE DE WHITE SPACE ==================== */
+
+  /* 1. Aproxima o bloco de cabeçalho diminuindo a margem morta inferior */
+  .reviews-section .section-header,
+  section[class*="avaliacao"] .section-header {
+    margin-bottom: 1rem !important;
+    /* Ajustado cirurgicamente de 2rem para 16px */
+  }
+
+  /* 2. Aproxima as estrelas douradas superiores do início do cartão */
+  .google-rating-summary,
+  .rating-stars-top {
+    margin-bottom: 1rem !important;
+    /* Puxa o card para perto do título */
+    margin-top: 0.25rem !important;
+  }
+
+  /* 3. Ajusta o topo da seção geral para dar o ritmo correto */
+  .reviews-section,
+  section[class*="avaliacao"] {
+    padding-top: 3.5rem !important;
+    /* Reduz o espaço morto do topo da dobra */
+    padding-bottom: 4.5rem !important;
+  }
+
+  /* ==================== AJUSTE CRÍTICO DE EXPANSÃO LÍQUIDA 100% MOBILE ==================== */
+
+  /* 1. Oculta as setas (Mantido conforme fluxo) */
+  .slider-arrow,
+  .prev-arrow,
+  .next-arrow,
+  #review-prev-btn,
+  #review-next-btn {
+    display: none !important;
+  }
+
+  /* 2. ZERA PREENCHIMENTOS LATERAIS QUE COMPRIMEM O CARROSSEL */
+  .reviews-slider-wrapper {
+    padding: 0 !important;
+    /* Libera o espaço de fora para o card respirar */
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Ajuste do Container de Scroll */
+  .reviews-slider-container {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    clip-path: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 20px !important;
+    /* Cria um recuo de segurança nas bordas para o card não colar no vidro do celular */
+    box-sizing: border-box !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .reviews-slider-container::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .reviews-slider-track {
+    display: flex !important;
+    gap: 16px !important;
+    /* Distância ideal entre um card e outro ao deslizar */
+    width: max-content !important;
+    transform: none !important;
+    padding: 5px 0 15px 0 !important;
+    /* Diminui o respiro de cima do trilho para 5px */
+  }
+
+  /* 4. EXPANSÃO DO QUADRADO PARA LARGURA MÁXIMA SEM TRAVAS */
+  .reviews-slider-track .review-card {
+    /* Mágica de UI: Ocupa toda a largura visível descontando apenas os recuos de segurança */
+    flex: 0 0 calc(100vw - 40px) !important;
+
+    /* REMOVE A TRAVA FIXA DO ESTÁGIO ANTERIOR PARA CRESCER 100% */
+    max-width: none !important;
+    min-width: auto !important;
+
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    padding: 2rem 1.5rem !important;
+    /* Restaura o respiro interno confortável */
+    box-sizing: border-box !important;
+    scroll-snap-align: center !important;
+  }
+
+  /* ==================== CENTRALIZAÇÃO DAS ESTRELAS INTERNAS DO CARD ==================== */
+  .reviews-slider-track .stars-card {
+    text-align: center !important;
+    /* Força as estrelinhas a irem para o meio absoluto do card */
+    margin-bottom: 1rem !important;
+    /* Mantém o respiro confortável de 16px até o texto */
+    width: 100% !important;
+  }
+
+  /* 5. Alinhamento e blindagem do cabeçalho */
+  .review-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    width: 100% !important;
+    position: relative !important;
+    padding-right: 32px !important;
+    box-sizing: border-box !important;
+  }
+
+  .review-user-info {
+    display: flex !important;
+    flex-direction: column !important;
+    max-width: 100% !important;
+  }
+
+  .review-name {
+    font-size: 1rem !important;
+    /* Retorna a um tamanho imponente e visível */
+    line-height: 1.3 !important;
+    color: #1a202c !important;
+    font-weight: 700 !important;
+  }
+
+  .google-g-icon {
+    position: absolute !important;
+    top: 4px !important;
+    right: 0 !important;
+    color: #cbd5e1 !important;
+    font-size: 1.1rem !important;
+  }
+
+  /* ==================== RECALIBRAÇÃO DE ALINHAMENTO TOTAL À ESQUERDA (AGENDAMENTO) ==================== */
+
+  /* 1. Força o container introdutório a alinhar todo o seu conteúdo na esquerda */
+  .scheduler-intro {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    /* Move o bloco todo para a margem esquerda */
+    text-align: left !important;
+    /* Alinha todas as linhas de texto à esquerda */
+  }
+
+  /* 2. Alinha explicitamente a palavra Conveniência (micro-tag) à esquerda */
+  .scheduler-section .section-tagline,
+  .scheduler-intro .section-badge {
+    text-align: left !important;
+    display: inline-block !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* 3. Blinda o título principal e o parágrafo de apoio para começarem na esquerda */
+  .scheduler-title,
+  .scheduler-intro h2,
+  .scheduler-p {
+    text-align: left !important;
+    /* Cravado na margem esquerda */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  /* 4. Mantém a lista de benefícios perfeitamente estruturada na esquerda */
+  .benefit-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-top: 1.5rem !important;
+    /* Espaçamento de Material Design para separar do texto */
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 5. Alinhamento de cada item (ícone vermelho + frase) */
+  .benefit-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .benefit-item i {
+    color: #e53e3e !important;
+    font-size: 1.1rem !important;
+    margin-top: 3px !important;
+    /* Alinhamento cirúrgico com a primeira linha do texto */
+    flex-shrink: 0 !important;
+  }
+
+  .benefit-item span {
+    font-size: 0.95rem !important;
+    line-height: 1.45 !important;
+    color: #4a5568 !important;
+    text-align: left !important;
+  }
+
+  /* ==================== COMPACTAÇÃO SIGNIFICATIVA DE TIPOGRAFIA DE CONTATO ==================== */
+
+  /* Diminui o espaçamento vertical entre os blocos de contato */
+  .contact-info-panel-left,
+  .contact-details-stack {
+    gap: 1.5rem !important;
+    /* Reduzido de 2.5rem para 24px */
+  }
+
+  /* Reduz sutilmente as etiquetas superiores (WHATSAPP, E-MAIL, ETC.) */
+  .detail-label {
+    font-size: 0.75rem !important;
+    /* Reduzido de 0.9rem para 12px */
+    letter-spacing: 1px !important;
+    margin-bottom: 0.25rem !important;
+    /* Aproxima ainda mais do dado abaixo */
+  }
+
+  /* REDUÇÃO SIGNIFICATIVA DOS DADOS (WHATSAPP, E-MAIL E ENDEREÇO) */
+  .detail-val {
+    font-size: 0.95rem !important;
+    /* Reduzido significativamente de 1.25rem para ~15px */
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    /* Deixa o bloco do endereço muito mais compacto */
+    color: #ffffff !important;
+  }
+
+  /* Ajusta proporcionalmente a bolinha do ícone para acompanhar o texto menor */
+  .detail-icon-box {
+    width: 38px !important;
+    /* Reduzido de 44px para 38px */
+    height: 38px !important;
+    font-size: 1rem !important;
+    margin-top: 0 !important;
+    /* Alinha perfeitamente com a primeira linha */
+  }
+
+  /* ==================== ALINHAMENTO COMPLETO DO RODAPÉ À ESQUERDA (MOBILE) ==================== */
+
+  /* Força o container principal e as colunas a alinharem tudo à esquerda */
+  .main-footer,
+  .footer-grid-three-columns,
+  .main-footer .container {
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    /* Cravado na esquerda */
+    justify-content: flex-start !important;
+  }
+
+  /* Alinha os blocos internos de cada coluna */
+  .footer-brand-panel,
+  .footer-links-panel {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    /* Move títulos e parágrafos para a esquerda */
+    text-align: left !important;
+  }
+
+  /* Garante que a logo e a descrição comecem no canto esquerdo */
+  .footer-brand-panel .logo-link {
+    justify-content: flex-start !important;
+    margin-left: 0 !important;
+  }
+
+  .footer-desc,
+  .footer-credentials-p {
+    text-align: left !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  /* Alinha a lista de links e as setinhas vermelhas na esquerda */
+  .footer-links-list {
+    align-items: flex-start !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .footer-links-list li,
+  .footer-links-list a {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  /* Garante as bolinhas das redes sociais alinhadas na extrema esquerda */
+  .footer-social-links {
+    justify-content: flex-start !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  /* Alinha as pílulas de segurança e credenciais da OAB */
+  .credentials-box {
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+
+  /* Alinha a barra de direitos autorais (copyright) bem abaixo do footer */
+  .footer-bottom-bar .bottom-bar-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .bottom-bar-links {
+    justify-content: flex-start !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin-top: 10px !important;
+  }
+
+  /* ==================== REDUÇÃO DE ESPAÇO MORTO NO TOPO DO AGENDAMENTO ==================== */
+
+  /* Reduz drasticamente o recuo superior da seção inteira no mobile */
+  .scheduler-section,
+  section[class*="agendamento"] {
+    padding-top: 1.5rem !important;
+    /* Puxa o título significativamente para cima */
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* Remove margens superiores do cabeçalho introdutório */
+  .scheduler-section .section-header,
+  .scheduler-intro {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Garante que a tag Conveniência não empurre espaço para cima */
+  .scheduler-section .section-tagline,
+  .scheduler-intro .section-badge {
+    margin-top: 0 !important;
+    margin-bottom: 0.25rem !important;
+    /* Mantém colado ao título principal */
+  }
+
+
+  .reviews-section,
+  section[class*="avaliacao"] {
+    padding-bottom: 3.5rem !important;
+    /* Diminui sutilmente a base da seção anterior */
+  }
+
+  /* ==================== UX CRO BLINDAGEM: FILTRO DE ARTIGOS NO MOBILE ==================== */
+
+  /* Oculta o 5º artigo (Assédio Moral) e o 6º artigo (Férias) apenas no celular */
+  .rights-grid article:nth-child(5),
+  .rights-grid article:nth-child(6) {
+    display: none !important;
+  }
+
+  .view-all-articles-container {
+    margin-top: 2rem !important;
+    /* Reduzido de 3.5rem para aproximar o fluxo do WhatsApp */
+  }
+
+  /* ==================== FORMATO RETÂNGULO PROPORCIONAL SLIM (GOOGLE MAPS) ==================== */
+  .contact-map-panel-right {
+    width: 100% !important;
+    height: 170px !important;
+    /* Altura calculada para gerar um retângulo horizontal perfeito em telas de 360px */
+    max-height: 180px !important;
+    min-height: auto !important;
+  }
+
+  /* Blinda o container do iframe para acompanhar o retângulo sem distorcer */
+  .maps-container-fluid {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+
+  /* Reduz e ajusta o botão "Ver no Google Maps" para que ele fique pequeno e harmônico com o novo retângulo */
+  .contact-map-panel-right a[href*="maps"] {
+    padding: 0.4rem 0.8rem !important;
+    /* Botão mais fino para o novo formato slim */
+    font-size: 0.75rem !important;
+    /* Letra reduzida para não obstruir o mapa pequeno */
+    top: 8px !important;
+    left: 8px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3) !important;
+  }
+
+  .contact-map-panel-right {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 21 / 10 !important;
+    /* Define geometricamente um retângulo horizontal esguio */
+  }
+
+  /* ==================== COMPACTAÇÃO EXTREMA DE ESPAÇO NO RODAPÉ (MOBILE) ==================== */
+
+  /* 1. Zera e diminui ao mínimo o espaço morto do topo do footer */
+  .main-footer {
+    padding-top: 1.5rem !important;
+    /* Puxa a logo e o conteúdo todo para cima */
+    margin-top: 0 !important;
+  }
+
+  /* 2. Compacta o espaçamento vertical entre as colunas empilhadas do rodapé */
+  .footer-grid-three-columns {
+    padding-top: 0 !important;
+    padding-bottom: 1.5rem !important;
+    /* Diminui o espaço antes da barra de direitos autorais */
+    gap: 1.5rem !important;
+    /* Reduz a distância vertical entre os blocos de links */
+  }
+
+  /* 3. Ajusta margens internas da logo e dos títulos para densidade total */
+  .footer-brand-panel .logo-link {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .footer-desc {
+    margin-top: 0.25rem !important;
+    margin-bottom: 1rem !important;
+    /* Aproxima os ícones das redes sociais */
+  }
+
+  .footer-title {
+    margin-bottom: 0.75rem !important;
+    /* Aproxima os títulos dos links e badges */
+  }
+
+  /* ==========================================================================
+     CORREÇÃO DE UX: ALINHAMENTO À ESQUERDA - AGENDAMENTO (MOBILE)
+     ========================================================================== */
+  /* Alinha o contêiner mestre do texto à esquerda */
+  .scheduler-section .scheduler-intro {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  /* Força a tag, o título e o parágrafo a iniciarem na margem esquerda */
+  .scheduler-section .scheduler-intro .section-badge,
+  .scheduler-section .scheduler-intro .section-tagline,
+  .scheduler-section .scheduler-intro h2.scheduler-title,
+  .scheduler-section .scheduler-intro p.scheduler-p {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+
+  /* Garante que os ícones e textos dos benefícios fiquem perfeitamente cravados à esquerda */
+  .scheduler-section .scheduler-intro .benefit-list {
+    align-items: flex-start !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .scheduler-section .scheduler-intro .benefit-item {
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+
+  /* ==========================================================================
+     CORREÇÃO DE UX: ALINHAMENTO À ESQUERDA - NOSSA HISTÓRIA (MOBILE)
+     ========================================================================== */
+  /* Contêiner principal da seção "Sobre Nós" */
+  .about-section .about-text-content {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  /* Força a tag, o título e os parágrafos a iniciarem na margem esquerda */
+  .about-section .about-text-content .section-tagline,
+  .about-section .about-text-content .about-title,
+  .about-section .about-text-content .about-p {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  /* Garante o alinhamento da div que envolve os parágrafos */
+  .about-section .about-subtitle-text {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  /* Lista de pilares (ícones) e seus textos */
+  .about-section .about-pillars {
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+
+  .about-section .pillar-item {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .about-section .pillar-title {
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.85rem !important;
+  }
+
+  .section-title {
+    font-size: 1.75rem !important;
+  }
+
+  .chatbot-window {
+    width: calc(100vw - 32px) !important;
+    bottom: 85px !important;
+    right: 16px !important;
+  }
+
+  /* ==================== REVISÃO PREMIUM: CARROSSEL DE AVALIAÇÕES MOBILE (100% RESPONSIVO) ==================== */
+
+  /* 1. Oculta as setas de navegação físicas para liberar espaço */
+  .review-arrow-btn,
+  .reviews-nav-arrows,
+  .reviews-section .carousel-arrow {
+    display: none !important;
+  }
+
+  /* 2. Configura o container pai para permitir o deslize nativo com o dedo */
+  .reviews-slider-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+    overflow-x: auto !important;
+    /* Habilita o scroll horizontal com o dedo */
+    scroll-snap-type: x mandatory !important;
+    /* Faz o card 'grudar' suavemente ao parar */
+    -webkit-overflow-scrolling: touch !important;
+    /* Scroll extremamente fluido no iOS/Safari */
+  }
+
+  /* Oculta a barra de rolagem horizontal padrão do navegador para ficar estético */
+  .reviews-slider-container::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* 3. Ajusta a linha dos cards (track) */
+  .reviews-slider-track {
+    display: flex !important;
+    gap: 16px !important;
+    width: max-content !important;
+    /* Permite que os cards fiquem lado a lado para deslizar */
+    transform: none !important;
+    /* Desativa a transição do JS antiga no mobile para usar o dedo */
+    padding-bottom: 10px !important;
+  }
+
+  /* 4. Alinhamento e dimensões perfeitas do Card na tela de 360px */
+  .review-card {
+    width: calc(100vw - 48px) !important;
+    /* Faz o quadrado caber exatamente na largura útil da tela */
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    scroll-snap-align: center !important;
+    /* Centraliza o quadrado ao deslizar */
+    flex-shrink: 0 !important;
+    /* Impede que o card seja esmagado */
+    box-sizing: border-box !important;
+    padding: 24px 20px !important;
+    /* Espaçamento interno elegante */
+  }
+
+  /* Garante o texto centralizado e confortável dentro do quadrado */
+  .review-card .review-text {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+  }
+
+  .reviews-dots-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 1.5rem !important;
+    gap: 8px !important;
+  }
+}
+
+/* ==========================================================================
+   CORREÇÃO UX: ESPAÇAMENTO HERO E TAMANHO DA TAG (DESKTOP E MOBILE)
+   ========================================================================== */
+
+/* 1. Redução do espaço em branco acima do texto */
+.hero-section {
+  padding-top: 110px !important;
+  /* Reduz o respiro global do topo */
+}
+
+.hero-section .hero-content {
+  padding-top: 0 !important;
+  /* Anula o "padding-top: 4rem" inserido no HTML que causava o clarão vazio */
+}
+
+/* 2. Compactação da Tag "Especialistas" (Desktop) */
+.hero-section .badge-experience {
+  padding: 0.3rem 0.8rem !important;
+  /* Deixa a pílula mais fina */
+  margin-bottom: 1rem !important;
+  /* Aproxima a tag do título principal */
+}
+
+.hero-section .badge-text,
+.hero-section .badge-experience span {
+  font-size: 0.7rem !important;
+  /* Diminui o texto */
+  letter-spacing: 1px !important;
+  /* Reduz o espaçamento entre letras */
+}
+
+/* 3. Compactação Extrema da Tag para Mobile */
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 100px !important;
+    /* Ajuste preciso para a tag não colar no menu fixo do celular */
+  }
+
+  .hero-section .badge-experience {
+    padding: 0.25rem 0.6rem !important;
+    /* Preenchimento mínimo, formato de tag */
+  }
+
+  .hero-section .badge-text,
+  .hero-section .badge-experience span {
+    font-size: 0.6rem !important;
+    /* Letra reduzida para caber perfeitamente */
+    letter-spacing: 0.5px !important;
+    /* Aproxima as letras para economizar espaço */
+    white-space: nowrap !important;
+    /* Força o texto a ficar em apenas uma linha, dando formato de tag real */
+  }
+}
+
+/* ==========================================================================
+   AJUSTES: HERO SECTION CENTRALIZADA E COM MAIS RESPIRO (DESKTOP E MOBILE)
+   ========================================================================== */
+
+/* 1. Ajuste de Espaçamento Superior (Respiro) e Centralização Global */
+.hero-section {
+  padding-top: 160px !important;
+  /* Aumenta o espaço para desgrudar do topo no PC */
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.hero-container {
+  grid-template-columns: 1fr !important;
+  /* Força 1 única coluna no PC e Mobile */
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Força o alinhamento central dos itens da coluna */
+.hero-content {
+  align-items: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+/* Força os textos internos a ficarem centralizados, sobrepondo estilos inline do HTML */
+.hero-title,
+.hero-description {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 2. Ajuste Específico para Mobile (até 768px) */
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 140px !important;
+    /* Espaço ideal e confortável abaixo do menu mobile */
+  }
+}
+
+/* ==========================================================================
+   AJUSTES: REDUÇÃO DO ESPAÇO INFERIOR DA HERO SECTION (DESKTOP E MOBILE)
+   ========================================================================== */
+
+/* 1. Ajuste Geral (Desktop) */
+.hero-section {
+  min-height: auto !important;
+  /* Remove a trava de 95% da altura da tela */
+  padding-bottom: 120px !important;
+  /* Espaço exato para não encostar na onda branca inferior */
+}
+
+/* Zera o espaçamento interno extra que estava direto no HTML */
+.hero-container .hero-content {
+  padding-bottom: 0 !important;
+}
+
+/* 2. Ajuste Específico para Mobile (até 768px) */
+@media (max-width: 768px) {
+  .hero-section {
+    /* Reduz ainda mais o espaço no celular, mantendo a onda respirando */
+    padding-bottom: 90px !important;
+  }
+}
+
+/* ==========================================================================
+   CORREÇÃO DE RESPONSIVIDADE: TABLETS E TELAS MÉDIAS (769px a 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  
+  /* 1. Ativação do Menu Hambúrguer no Tablet (Evita esmagamento do cabeçalho) */
+  .mobile-toggle {
+    display: flex !important; /* Mostra o ícone do menu hambúrguer */
+  }
+  
+  .header-actions .btn-nav {
+    display: none !important; /* Esconde o botão superior para não competir por espaço */
+  }
+
+  /* 2. Reconfiguração da Barra de Navegação Oculta (Estilo Mobile) */
+  .nav-menu {
+    position: fixed !important;
+    top: 80px !important;
+    left: -100% !important; /* Escondido por padrão, aberto via JavaScript */
+    width: 100% !important;
+    height: calc(100vh - 80px) !important;
+    background-color: #0e0e10 !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 998 !important;
+    border-top: 1px solid rgba(148, 163, 184, 0.1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .nav-menu.open {
+    left: 0 !important; /* Classe que o seu JS já ativa ao clicar */
+  }
+
+  .nav-list {
+    flex-direction: column !important;
+    padding: 40px 24px !important;
+    gap: 24px !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .nav-item {
+    font-size: 1.1rem !important; /* Links maiores para toque na tela */
+  }
+
+  /* 3. Ajuste de Respiro e Centralização do Hero na Tela Média */
+  .hero-section {
+    padding-top: 140px !important; /* Respiro ideal abaixo da navbar */
+    padding-bottom: 100px !important;
+  }
+  
+  .hero-title {
+    font-size: 2.6rem !important; /* Título escalado para não quebrar */
+    line-height: 1.25 !important;
+    padding: 0 15px !important; /* Margem de segurança nas laterais */
+  }
+  
+  .hero-description {
+    font-size: 1.05rem !important;
+    padding: 0 20px !important; /* Margem de segurança nas laterais */
+  }
+}
+
+/* ==========================================================================
+   CORREÇÃO DE UX: CABEÇALHO LADO A LADO EM TABLETS (ATÉ 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  /* Impede que o cabeçalho aja como uma coluna centralizada */
+  .main-header, 
+  header#navbar {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Força a logo e as ações a ficarem em linha (row) e espaçados nas pontas (space-between) */
+  .header-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; 
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 24px !important; /* Margem de segurança lateral */
+    box-sizing: border-box !important;
+  }
+
+  /* Garante que a logo fique na margem esquerda */
+  .logo-link {
+    display: flex !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+  }
+
+  /* Garante que o menu hambúrguer fique na margem direita */
+  .header-actions {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   CORREÇÃO DE ESTRUTURA: RESOLVENDO O ESPAÇO VAZIO LATERAL (DEVTOOLS/TABLETS)
+   ========================================================================== */
+
+/* 1. Base da Página: Previne que o corpo do site encolha em telas maiores */
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  display: block !important;
+}
+
+/* 2. Seções Principais: Desativa a coluna flexível que estava esmagando o fundo */
+section, 
+header.main-header, 
+footer.main-footer {
+  display: block !important; /* Retorna ao padrão de bloco para esticar o fundo 100% */
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* 3. Garantia de Centralização do Miolo (Conteúdo) */
+.container {
+  width: 100% !important;
+  max-width: var(--container-width, 1200px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

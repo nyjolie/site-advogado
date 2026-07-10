@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo | Falce Advocacia</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* RESET E CONFIGURAÇÕES GERAIS BASEADAS NO SEU LAYOUT DARK */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #0f0f11;
+      color: #cbd5e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* TOP BAR DO PAINEL */
+    .admin-header {
+      background: #16161a;
+      border-bottom: 1px solid #232329;
+      height: 60px;
+      width: 100%;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .admin-logo {
+      font-family: 'Noto Serif', serif;
+      font-weight: 800;
+      color: #ffffff;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .admin-logo span {
+      color: #e53e3e;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(229, 62, 62, 0.1);
+      border: 1px solid #e53e3e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e53e3e;
+    }
+
+    /* CONTAINER PRINCIPAL DO PAINEL */
+    .admin-container {
+      flex: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .panel-headline {
+      margin-bottom: 2rem;
+    }
+
+    .panel-headline h1 {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .panel-headline p {
+      font-size: 0.9rem;
+      color: #718096;
+    }
+
+    /* GRID DE TRABALHO */
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CARD DO FORMULÁRIO DE UPLOAD */
+    .upload-card {
+      background: #16161a;
+      border: 1px solid #232329;
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .card-title {
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-title i {
+      color: #e53e3e;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .admin-input {
+      width: 100%;
+      background: #0f0f11;
+      border: 1px solid #232329;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: #ffffff;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+
+    .admin-input:focus {
+      border-color: #e53e3e;
+      outline: none;
+    }
+
+    /* ÁREA DROPZONE PREMIUM PARA O PDF */
+    .dropzone-area {
+      border: 2px dashed #232329;
+      background: #0f0f11;
+      border-radius: 8px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      position: relative;
+    }
+
+    .dropzone-area:hover, .dropzone-area.dragover {
+      border-color: #e53e3e;
+      background: rgba(229, 62, 62, 0.02);
+    }
+
+    .dropzone-icon {
+      font-size: 2rem;
+      color: #e53e3e;
+      margin-bottom: 0.75rem;
+    }
+
+    .dropzone-text h4 {
+      color: #ffffff;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .dropzone-text p {
+      font-size: 0.8rem;
+      color: #718096;
+    }
+
+    /* Oculta o input file nativo feio */
+    .file-input-hidden {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Arquivo selecionado feedback container */
+    .file-status {
+      display: none;
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid #232329;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .file-status span {
+      color: #cbd5e0;
+      font-weight: 500;
+    }
+
+    .btn-publish {
+      width: 100%;
+      background: #e53e3e;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .btn-publish:hover {
+      background: #c53030;
+    }
+
+    /* HISTÓRICO DE ARTIGOS LATERAIS */
+    .history-card {
+      background: #16161a;
+      border: 1px solid #232329;
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: fit-content;
+    }
+
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .article-item {
+      background: #0f0f11;
+      border: 1px solid #232329;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .article-info h4 {
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 240px;
+    }
+
+    .article-info span {
+      font-size: 0.75rem;
+      color: #718096;
+    }
+
+    .btn-delete {
+      background: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 0.25rem;
+      transition: color 0.2s;
+    }
+
+    .btn-delete:hover {
+      color: #e53e3e;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="admin-header">
+    <div class="admin-logo">FALCE<span>.</span>ADMIN</div>
+    <div class="user-info">
+      <span>Dr. Lúcio Falce</span>
+      <div class="user-avatar">
+        <i class="fas fa-user-shield"></i>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    
+    <div class="panel-headline">
+      <h1>Publicador Inteligente</h1>
+      <p>Suba o documento do artigo jurídico em formato PDF. A IA fará a formatação automática e espelhará o layout no site.</p>
+    </div>
+
+    <div class="panel-grid">
+      
+      <section class="upload-card">
+        <h2 class="card-title"><i class="fas fa-pen-nib"></i> Novo Artigo</h2>
+        
+        <form id="admin-publish-form">
+          
+          <div class="form-group">
+            <label class="form-label" for="article-category">Categoria / Área do Direito</label>
+            <input type="text" id="article-category" class="admin-input" placeholder="Ex: Direito do Trabalho, LGPD, Compliance" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Documento do Artigo (PDF ou Word)</label>
+            <div class="dropzone-area" id="dropzone">
+              <i class="fas fa-file-pdf dropzone-icon"></i>
+              <div class="dropzone-text">
+                <h4>Arraste o arquivo aqui ou clique para selecionar</h4>
+                <p>Suporta arquivos .pdf, .doc ou .docx de até 15MB</p>
+              </div>
+              <input type="file" id="article-file" class="file-input-hidden" accept=".pdf,.doc,.docx" required>
+            </div>
+            
+            <div class="file-status" id="fileStatus">
+              <span id="fileName"><i class="fas fa-paperclip" style="color: #e53e3e; margin-right: 5px;"></i> nenhum_arquivo.pdf</span>
+              <button type="button" class="btn-delete" id="btnRemoveFile" title="Remover arquivo"><i class="fas fa-times"></i></button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-publish">
+            <i class="fas fa-cloud-upload-alt"></i> Processar com IA & Publicar Artigo
+          </button>
+
+        </form>
+      </section>
+
+      <section class="history-card">
+        <h2 class="card-title"><i class="fas fa-history"></i> Artigos Online</h2>
+        
+        <div class="articles-list">
+          <div class="article-item">
+            <div class="article-info">
+              <h4>Rescisão Indireta por Falta de FGTS</h4>
+              <span>Direito do Trabalho • 08 Jun 2026</span>
+            </div>
+            <button class="btn-delete" title="Excluir Artigo"><i class="far fa-trash-alt"></i></button>
+          </div>
+
+          <div class="article-item">
+            <div class="article-info">
+              <h4>Cálculo de Horas Extras e Intervalo</h4>
+              <span>Direito do Trabalho • 02 Jun 2026</span>
+            </div>
+            <button class="btn-delete" title="Excluir Artigo"><i class="far fa-trash-alt"></i></button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    const fileInput = document.getElementById('article-file');
+    const dropzone = document.getElementById('dropzone');
+    const fileStatus = document.getElementById('fileStatus');
+    const fileNameSpan = document.getElementById('fileName');
+    const btnRemoveFile = document.getElementById('btnRemoveFile');
+    const form = document.getElementById('admin-publish-form');
+
+    // Mostra o nome do arquivo quando selecionado
+    fileInput.addEventListener('change', function(e) {
+      if (fileInput.files.length > 0) {
+        showFile(fileInput.files[0].name);
+      }
+    });
+
+    // Efeito Visual de Drag & Drop
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, () => dropzone.classList.add('dragover'), false);
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, () => dropzone.classList.remove('dragover'), false);
+    });
+
+    // Remove o arquivo selecionado
+    btnRemoveFile.addEventListener('click', function() {
+      fileInput.value = ""; // Limpa o input
+      fileStatus.style.display = "none"; // Oculta barra
+      dropzone.style.display = "block"; // Reexibe dropzone
+    });
+
+    function showFile(name) {
+      fileNameSpan.innerHTML = `<i class="fas fa-file-pdf" style="color: #e53e3e; margin-right: 8px;"></i> ${name}`;
+      dropzone.style.display = "none";
+      fileStatus.style.display = "flex";
+    }
+
+    // Evento de simulação do envio (Onde a mágica do banco rodará no futuro)
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const category = document.getElementById('article-category').value;
+      const file = fileInput.files[0];
+
+      // Alerta de teste para ver o funcionamento do Front
+      alert(`Sucesso no Teste!\n\nArquivo: "${file.name}" capturado.\nCategoria: "${category}" salva.\n\nPronto para enviar ao banco de dados ou via Webhook para a IA processar!`);
+      
+      // Reseta o formulário pós-envio
+      form.reset();
+      fileStatus.style.display = "none";
+      dropzone.style.display = "block";
+    });
+  </script>
+</body>
+</html>

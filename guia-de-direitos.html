@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Guia Completo de Direitos Trabalhistas - Falce Advocacia. Base de conhecimento dedicada a esclarecer dúvidas de trabalhadores e empresas.">
+  <title>Guia de Direitos Trabalhistas | Falce Advocacia</title>
+
+  <link rel="icon" type="image/svg+xml" href="logo_vector.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ==================== ESTILO BASE DO MODAL (DESKTOP) ==================== */
+    body.modal-open {
+      overflow: hidden !important;
+      height: 100vh !important;
+      /* Força a página de trás a ter o tamanho exato da tela */
+      touch-action: none;
+      /* Desativa gestos de toque no corpo principal */
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 999999 !important;
+      display: block !important;
+      pointer-events: none;
+      opacity: 0;
+      overflow-y: auto;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Largura expandida no Desktop para o texto não ficar espremido */
+    .modal-backdrop .modal-card {
+      background: #16161a;
+      border: 1px solid #232329;
+      width: 100%;
+      max-width: 960px;
+      /* Aumentado de 720px para 960px para melhor leitura */
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2rem auto;
+      box-sizing: border-box;
+      text-align: left;
+      position: relative;
+      opacity: 0;
+      transform: translateY(-30px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    }
+
+    /* Libera o toque e o scroll apenas e estritamente dentro da caixinha do modal */
+    .modal-backdrop.is-active .modal-card {
+      opacity: 1;
+      transform: translateY(0);
+      touch-action: pan-y !important;
+      /* Permite o arrastar nativo para cima e para baixo apenas aqui dentro */
+    }
+
+    .modal-close {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid #232329 !important;
+      color: #ffffff !important;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: #e53e3e !important;
+      border-color: #e53e3e !important;
+    }
+
+    .mobile-drag-handle {
+      display: none;
+    }
+
+    /* Estilos das subseções internas do modal */
+    .modal-ui-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #232329;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-section-badge {
+      color: #d4af37;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-meta-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      justify-content: flex-start;
+    }
+
+    .modal-duration {
+      color: #e2e8f0;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .modal-author-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-avatar {
+      background: #e53e3e;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .modal-author-name {
+      color: #e2e8f0;
+      font-size: 0.9rem;
+    }
+
+    .author-status {
+      color: #a0aec0;
+    }
+
+    .modal-body-content {
+      color: #cbd5e0;
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .modal-body-content h4 {
+      color: #fff;
+      font-size: 1.15rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .modal-highlight-box {
+      border-left: 3px solid #e53e3e;
+      padding-left: 1rem;
+      font-style: italic;
+      color: #edf2f7;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .modal-bullet-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .modal-bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .modal-bullet-list li::before {
+      content: '>';
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    /* Cores de Destaque por ID do Modal */
+    #art-rescisao .modal-highlight-box {
+      border-left-color: #e53e3e;
+    }
+
+    #art-rescisao .modal-bullet-list li::before {
+      color: #e53e3e;
+    }
+
+    #art-homeoffice .modal-highlight-box {
+      border-left-color: #3182ce;
+    }
+
+    #art-homeoffice .modal-bullet-list li::before {
+      color: #3182ce;
+    }
+
+    #art-prevencao .modal-highlight-box {
+      border-left-color: #4a5568;
+    }
+
+    #art-prevencao .modal-bullet-list li::before {
+      color: #4a5568;
+    }
+
+    #art-horasextras .modal-highlight-box {
+      border-left-color: #319795;
+    }
+
+    #art-horasextras .modal-bullet-list li::before {
+      color: #319795;
+    }
+
+    #art-assedio .modal-highlight-box {
+      border-left-color: #805ad5;
+    }
+
+    #art-assedio .modal-bullet-list li::before {
+      color: #805ad5;
+    }
+
+    #art-ferias .modal-highlight-box {
+      border-left-color: #dd6b20;
+    }
+
+    #art-ferias .modal-bullet-list li::before {
+      color: #dd6b20;
+    }
+
+    .modal-cta-box {
+      border-top: 1px solid #232329;
+      padding-top: 1.5rem;
+      text-align: center;
+    }
+
+    .modal-cta-inline-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .modal-cta-text {
+      color: #fff;
+      font-weight: 500;
+      margin: 0 !important;
+      font-size: 1.05rem;
+    }
+
+    .btn-whatsapp-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #fff;
+      padding: 0.75rem 1.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-whatsapp-cta:hover {
+      background-color: #128c7e;
+      transform: translateY(-1px);
+    }
+
+    /* ==================== COMPORTAMENTO MOBILE APERFEIÇOADO (CELULAR) ==================== */
+    @media (max-width: 768px) {
+      .modal-backdrop {
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        padding: 0 !important;
+        overflow-y: hidden !important;
+        background: #0b0b0d !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      .modal-backdrop .modal-card {
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 24px 24px 0 0 !important;
+
+        /* Ajustado o padding do topo para acomodar o cabeçalho fixo nativo */
+        padding: 0 1.25rem 2.5rem 1.25rem !important;
+
+        max-height: 85vh !important;
+        overflow-y: auto !important;
+        /* A rolagem acontece estritamente dentro do card */
+        -webkit-overflow-scrolling: touch;
+
+        transform: translateY(100%);
+        opacity: 1;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        background: #16161a !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Barrinha decorativa de arrastar estilo iOS no topo absoluto do card */
+      .mobile-drag-handle {
+        display: block !important;
+        width: 44px !important;
+        height: 5px !important;
+        background: #3f3f4e !important;
+        border-radius: 3px !important;
+        margin: 0.75rem auto 0.5rem auto !important;
+        position: relative !important;
+        z-index: 102 !important;
+      }
+
+      /* ==================== CONFIGURAÇÃO DO TOPO FIXO EM 52PX (CELULAR) ==================== */
+      .modal-backdrop .modal-ui-header {
+        position: sticky !important;
+        /* Mantém a barra congelada no topo do scroll */
+        top: 0 !important;
+        background: #16161a !important;
+        /* Fundo sólido para esconder o texto que passa por baixo */
+        z-index: 101 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-bottom: 1px solid #232329 !important;
+
+        /* VALOR PERFEITO: Definido em 52px conforme seu cálculo para eliminar o bug */
+        height: 52px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+
+        display: flex !important;
+        align-items: center !important;
+        /* Alinha o texto "Guia de Direitos" perfeitamente no centro vertical dos 52px */
+        justify-content: flex-start !important;
+        position: relative !important;
+        /* Base rígida para o botão absoluto */
+      }
+
+      /* Texto "Guia de Direitos" */
+      .modal-section-badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        color: #d4af37 !important;
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+      }
+
+      /* BOTÃO (X) TRAVADO E CENTRALIZADO NOS 52PX */
+      .modal-close {
+        position: absolute !important;
+
+        /* CÁLCULO MATEMÁTICO: (52px de altura da barra - 32px do botão) / 2 = 10px para centralizar perfeito */
+        top: 10px !important;
+        right: 0 !important;
+        /* Alinhado na borda direita da tela */
+
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid #232329 !important;
+        color: #ffffff !important;
+        cursor: pointer !important;
+
+        font-size: 1.2rem !important;
+        line-height: 1 !important;
+        transform: none !important;
+      }
+
+      /* DESGRUDA A TAG DO TOP: Adiciona espaçamento na tag que fica logo abaixo da barra */
+      .modal-backdrop .modal-meta-info {
+        margin-top: 1.5rem !important;
+        /* Empurra a tag (Ex: RESCISÃO) para baixo, dando respiro */
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+      }
+
+      /* Título do artigo */
+      .modal-backdrop .modal-title {
+        font-size: 1.5rem !important;
+        line-height: 1.25 !important;
+        margin-top: 0.75rem !important;
+        margin-bottom: 1rem !important;
+        text-align: left;
+        width: 100%;
+      }
+
+      /* BLOCO DE DÚVIDAS COMPACTO E EM LINHA */
+      .modal-cta-box {
+        margin-top: 2rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid #232329;
+        width: 100%;
+      }
+
+      .modal-cta-inline-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 1rem;
+        width: 100%;
+        text-align: left;
+      }
+
+      .modal-cta-text {
+        font-size: 0.85rem !important;
+        color: #a0aec0 !important;
+        margin: 0 !important;
+        line-height: 1.3 !important;
+        max-width: 55%;
+      }
+
+      .modal-cta-box .btn-whatsapp-cta {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.4rem !important;
+        width: auto !important;
+        white-space: nowrap !important;
+        padding: 0.55rem 1rem !important;
+        font-size: 0.85rem !important;
+        border-radius: 6px !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-dark-slate"
+  style="background: #0f0f12; color: #fff; font-family: 'Inter', sans-serif; margin: 0; padding: 0;">
+
+  <!-- Header Simplificado para Foco de Leitura -->
+  <header style="border-bottom: 1px solid #232329; padding: 1.5rem 0; background: #16161a;">
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html"
+        style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #fff; font-weight: 700; font-size: 1.2rem;">
+        <i class="fas fa-arrow-left" style="color: #e53e3e;"></i> Voltar ao Site Principal
+      </a>
+      <span class="rights-tagline" style="font-size: 0.9rem; font-weight: 600; letter-spacing: 1px;">GUIA DE
+        DIREITOS</span>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
+
+    <div style="text-align: left; margin-bottom: 4rem;">
+      <h1 style="font-family: 'Outfit', sans-serif; font-size: 2.8rem; margin: 0 0 1rem 0; color: #fff;">Biblioteca de
+        Direitos Trabalhistas</h1>
+      <p style="color: #a0aec0; font-size: 1.1rem; max-width: 700px; margin: 0; line-height: 1.6;">
+        Esclareça suas dúvidas com artigos detalhados, elaborados por nossos advogados especialistas sobre as principais
+        regras da CLT.
+      </p>
+    </div>
+
+    <!-- Grid de Artigos Recalibrada para 3 Colunas no Desktop -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; width: 100%;">
+
+      <!-- Artigo 1 -->
+      <article class="article-card px-aligned">
+        <div class="article-meta-row">
+          <span class="article-tag tag-red">RESCISÃO</span>
+          <div class="read-time"><i class="far fa-clock"></i> 3 min</div>
+        </div>
+        <h3 class="article-card-title">Rescisão Indireta: O que é e quando solicitar?</h3>
+        <p class="article-excerpt">Entenda como a falta de pagamento de salários ou abusos morais de gerentes podem lhe
+          garantir o direito de pedir demissão sem perder os direitos...</p>
+        <a href="#" data-modal-target="art-rescisao" class="btn-read-article"
+          style="text-decoration: none; color: #e53e3e; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+          Ler Artigo Completo <i class="fas fa-chevron-right"></i>
+        </a>
+      </article>
+
+      <!-- Artigo 2 -->
+      <article class="article-card px-aligned">
+        <div class="article-meta-row">
+          <span class="article-tag tag-blue">HOME OFFICE</span>
+          <div class="read-time"><i class="far fa-clock"></i> 4 min</div>
+        </div>
+        <h3 class="article-card-title">Horas Extras na Jornada Híbrida e Home Office</h3>
+        <p class="article-excerpt">Com as novas diretrizes da CLT, o trabalhador sob o regime híbrido ou remoto possui
+          ou não o direito ao recebimento de horas extraordinárias?</p>
+        <a href="#" data-modal-target="art-homeoffice" class="btn-read-article"
+          style="text-decoration: none; color: #e53e3e; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+          Ler Artigo Completo <i class="fas fa-chevron-right"></i>
+        </a>
+      </article>
+
+      <!-- Artigo 3 -->
+      <article class="article-card px-aligned">
+        <div class="article-meta-row">
+          <span class="article-tag tag-grey">PREVENÇÃO</span>
+          <div class="read-time"><i class="far fa-clock"></i> 5 min</div>
+        </div>
+        <h3 class="article-card-title">Como Evitar Riscos e Acidentes no Trabalho?</h3>
+        <p class="article-excerpt">O papel essencial do departamento de recursos humanos na implementação de regras
+          preventivas internas, eliminando brechas de indenizações...</p>
+        <a href="#" data-modal-target="art-prevencao" class="btn-read-article"
+          style="text-decoration: none; color: #e53e3e; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+          Ler Artigo Completo <i class="fas fa-chevron-right"></i>
+        </a>
+      </article>
+
+      <!-- Artigo 4 -->
+      <article class="article-card px-aligned">
+        <div class="article-meta-row">
+          <span class="article-tag tag-teal">HORAS EXTRAS</span>
+          <div class="read-time"><i class="far fa-clock"></i> 3 min</div>
+        </div>
+        <h3 class="article-card-title">Cálculo de Horas Extras e Reflexos Verbas</h3>
+        <p class="article-excerpt">Descubra como funciona a remuneração do período extraordinário, os adicionais
+          noturnos e como esses values refletem nas demais verbas laborais...</p>
+        <a href="#" data-modal-target="art-horasextras" class="btn-read-article"
+          style="text-decoration: none; color: #e53e3e; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+          Ler Artigo Completo <i class="fas fa-chevron-right"></i>
+        </a>
+      </article>
+
+      <!-- Artigo 5 -->
+      <article class="article-card px-aligned">
+        <div class="article-meta-row">
+          <span class="article-tag tag-purple">ASSÉDIO MORAL</span>
+          <div class="read-time"><i class="far fa-clock"></i> 5 min</div>
+        </div>
+        <h3 class="article-card-title">Assédio Moral no Trabalho: Como Agir e Provar?</h3>
+        <p class="article-excerpt">Humilhações diárias, metas impossíveis e perseguições veladas de gerentes violam a
+          dignidade do trabalhador. Saiba como reunir provas robustas...</p>
+        <a href="#" data-modal-target="art-assedio" class="btn-read-article"
+          style="text-decoration: none; color: #e53e3e; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+          Ler Artigo Completo <i class="fas fa-chevron-right"></i>
+        </a>
+      </article>
+
+      <!-- Artigo 6 -->
+      <article class="article-card px-aligned">
+        <div class="article-meta-row">
+          <span class="article-tag tag-orange">FÉRIAS</span>
+          <div class="read-time"><i class="far fa-clock"></i> 3 min</div>
+        </div>
+        <h3 class="article-card-title">Direito a Férias: Prazos, Venda e Atrasos</h3>
+        <p class="article-excerpt">Entenda as regras de aquisição e concessão de descanso anual, o pagamento do terço
+          constitucional e as penalidades severas em caso de atraso...</p>
+        <a href="#" data-modal-target="art-ferias" class="btn-read-article"
+          style="text-decoration: none; color: #e53e3e; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+          Ler Artigo Completo <i class="fas fa-chevron-right"></i>
+        </a>
+      </article>
+
+      <!-- Artigo 7 -->
+      <article id="estabilidade-gestante" class="article-card px-aligned">
+        <div class="article-meta-row">
+          <span class="article-tag tag-purple">ESTABILIDADE</span>
+          <div class="read-time"><i class="far fa-clock"></i> 3 min</div>
+        </div>
+        <h3 class="article-card-title">Estabilidade da Gestante: O Empregador Precisa Saber da Gravidez?</h3>
+        <p class="article-excerpt">Muitos acreditam que o direito à estabilidade depende do conhecimento do patrão no
+          momento da demissão. Descubra como a Justiça do Trabalho interpreta a proteção à trabalhadora e ao nascituro.
+        </p>
+        <a href="#" data-modal-target="art-gestante" class="btn-read-article"
+          style="text-decoration: none; color: #e53e3e; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+          Ler Artigo Completo <i class="fas fa-chevron-right"></i>
+        </a>
+      </article>
+
+    </div>
+  </main>
+
+
+  <!-- Rodapé Premium Reduzido -->
+  <footer
+    style="padding: 4rem 0 3rem 0; border-top: 1px solid #232329; text-align: center; color: #718096; font-size: 0.85rem; background: #16161a;">
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+      <img src="logo falce.svg" alt="Falce Advocacia"
+        style="height: 40px; width: auto; display: block; opacity: 0.8; margin-bottom: 0.5rem;">
+      <p style="margin: 0;">&copy; 2026 Falce Advocacia. Todos os direitos reservados.</p>
+      <p style="margin: 0; font-size: 0.75rem; color: #4a5568;">OAB/SP: 193.419</p>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Silver/Metallic Gradient for the upper F -->
+    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#d1d5db" />
+      <stop offset="70%" stop-color="#9ca3af" />
+      <stop offset="100%" stop-color="#4b5563" />
+    </linearGradient>
+    
+    <!-- Deep Red/Ruby Gradient for the lower F -->
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="40%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#7f1d1d" />
+    </linearGradient>
+    
+    <!-- Dark Charcoal background gradient for standalone presentation if needed -->
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#2d2d2d" />
+      <stop offset="100%" stop-color="#121214" />
+    </radialGradient>
+    
+    <!-- Dropshadow filter for depth -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Optional Elegant Dark Background (Can be toggled or styled) -->
+  <rect width="100%" height="100%" fill="url(#bgGradient)" rx="20" />
+
+  <!-- Monogram & Text Container -->
+  <g transform="translate(0, -20)">
+    <!-- The Interlocking 'F' Monogram in Diamond Shield -->
+    <g transform="translate(400, 320)" filter="url(#dropShadow)">
+      <!-- Rotated Diamond base outline if desired, or let the shapes form the diamond -->
+      <!-- Silver Upper/Left Interlocking F Shape -->
+      <path d="M -160,0 
+               L -80,-80 
+               L 40,40 
+               L 120,-40 
+               L 0,-160 
+               L -160,0 Z" 
+            fill="url(#silverGradient)" />
+            
+      <!-- We refine the path to represent the interlocking F monogram exactly -->
+      <!-- Clean geometric cuts forming the elegant F monogram -->
+      <!-- Silver F (Upper structure) -->
+      <path d="M -120,-20 
+               L 0,-140 
+               L 120,-20 
+               L 80,20 
+               L 0,-60 
+               L -40,-20 
+               L 20,40 
+               L -10,70 
+               L -120,-20 Z" 
+            fill="url(#silverGradient)" />
+      
+      <!-- Red F (Lower structure, rotated / interlocking) -->
+      <path d="M 120,20 
+               L 0,140 
+               L -120,20 
+               L -80,-20 
+               L 0,60 
+               L 40,20 
+               L -20,-40 
+               L 10,-70 
+               L 120,20 Z" 
+            fill="url(#redGradient)" />
+            
+      <!-- Subtle Central dividing accent line for premium look -->
+      <path d="M -40,-20 L 40,20" stroke="#121214" stroke-width="6" stroke-linecap="round" />
+    </g>
+
+    <!-- Typography -->
+    <!-- "Falce" in a high-end serif font -->
+    <text x="400" y="550" 
+          font-family="'Playfair Display', 'Georgia', 'Times New Roman', serif" 
+          font-size="96" 
+          font-weight="bold" 
+          fill="#ffffff" 
+          text-anchor="middle" 
+          letter-spacing="2">Falce</text>
+
+    <!-- "ADVOCACIA" in tracking sans-serif -->
+    <text x="400" y="620" 
+          font-family="'Inter', 'Outfit', 'Montserrat', 'Helvetica', sans-serif" 
+          font-size="34" 
+          font-weight="500" 
+          fill="#e2e8f0" 
+          text-anchor="middle" 
+          letter-spacing="20">ADVOCACIA</text>
+          
+    <!-- "21 Anos de Excelência" Subtitle -->
+    <text x="400" y="670" 
+          font-family="'Inter', 'Outfit', sans-serif" 
+          font-size="18" 
+          font-weight="400" 
+          fill="#94a3b8" 
+          text-anchor="middle" 
+          letter-spacing="6">21 ANOS DE EXPERIÊNCIA</text>
+  </g>
+</svg>
