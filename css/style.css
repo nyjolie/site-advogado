@@ -5861,14 +5861,19 @@ footer.main-footer {
    AJUSTE DE TIPOGRAFIA: TÍTULO MAXIMIZADO E SUBTÍTULO OTIMIZADO (MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
-  
+
   /* 1. Expansão Máxima do Título Principal (Impacto Visual) */
   .hero-section .hero-title {
-    font-size: 2.65rem !important; /* Fonte extra grande para prender a atenção */
-    line-height: 1.1 !important; /* Linhas bem justas para o bloco não ficar alto demais */
-    letter-spacing: -1.5px !important; /* Mantém as letras unidas para caber mais palavras */
-    padding: 0 12px !important; /* Espaço de segurança para não encostar no vidro do celular */
-    width: 100% !important; /* Deixa a "caixa azul" preencher a tela */
+    font-size: 2.65rem !important;
+    /* Fonte extra grande para prender a atenção */
+    line-height: 1.1 !important;
+    /* Linhas bem justas para o bloco não ficar alto demais */
+    letter-spacing: -1.5px !important;
+    /* Mantém as letras unidas para caber mais palavras */
+    padding: 0 12px !important;
+    /* Espaço de segurança para não encostar no vidro do celular */
+    width: 100% !important;
+    /* Deixa a "caixa azul" preencher a tela */
     max-width: 100% !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -5876,10 +5881,14 @@ footer.main-footer {
 
   /* 2. Redução e Otimização de Leitura do Subtítulo (~5 linhas) */
   .hero-section .hero-description {
-    font-size: 0.9rem !important; /* Fonte menor e elegante (contraste com o título gigante) */
-    line-height: 1.55 !important; /* Respiro confortável entre as linhas para facilitar a leitura */
-    width: 90% !important; /* Encurta um pouco as laterais para forçar o texto a descer em bloco */
-    max-width: 400px !important; /* Limite de segurança extra */
+    font-size: 0.9rem !important;
+    /* Fonte menor e elegante (contraste com o título gigante) */
+    line-height: 1.55 !important;
+    /* Respiro confortável entre as linhas para facilitar a leitura */
+    width: 90% !important;
+    /* Encurta um pouco as laterais para forçar o texto a descer em bloco */
+    max-width: 400px !important;
+    /* Limite de segurança extra */
     margin-left: auto !important;
     margin-right: auto !important;
     padding: 0 !important;
@@ -5889,8 +5898,9 @@ footer.main-footer {
 /* Proteção extra para telas muito pequenas (ex: iPhone SE com 320px) */
 @media (max-width: 380px) {
   .hero-section .hero-title {
-    font-size: 2.2rem !important; 
+    font-size: 2.2rem !important;
   }
+
   .hero-section .hero-description {
     font-size: 0.85rem !important;
   }
@@ -5900,9 +5910,12 @@ footer.main-footer {
    UX/CRO: EXIBIR BOTÃO WHATSAPP APENAS APÓS A PRIMEIRA SEÇÃO
    ========================================================================== */
 .chatbot-container {
-  opacity: 0 !important; /* Escondido por padrão */
-  visibility: hidden !important; /* Remove da interação para não bloquear cliques */
-  transform: translateY(30px) !important; /* Empurra um pouco para baixo para o efeito de entrada */
+  opacity: 0 !important;
+  /* Escondido por padrão */
+  visibility: hidden !important;
+  /* Remove da interação para não bloquear cliques */
+  transform: translateY(30px) !important;
+  /* Empurra um pouco para baixo para o efeito de entrada */
   transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease !important;
 }
 
@@ -5910,18 +5923,21 @@ footer.main-footer {
 .chatbot-container.show-btn {
   opacity: 1 !important;
   visibility: visible !important;
-  transform: translateY(0) !important; /* Retorna à posição original */
+  transform: translateY(0) !important;
+  /* Retorna à posição original */
 }
 
 /* ==========================================================================
    AJUSTE FINO: POSIÇÃO DO BOTÃO WHATSAPP (MAIS PARA A DIREITA)
    ========================================================================== */
 .chatbot-container {
-  right: 20px !important; /* Reduz de 30px para 20px, empurrando para a direita no PC */
+  right: 20px !important;
+  /* Reduz de 30px para 20px, empurrando para a direita no PC */
 }
 
 @media (max-width: 768px) {
   .chatbot-container {
-    right: 12px !important; /* No mobile, cola ainda mais na direita para poupar espaço de tela */
+    right: 12px !important;
+    /* No mobile, cola ainda mais na direita para poupar espaço de tela */
   }
 }
